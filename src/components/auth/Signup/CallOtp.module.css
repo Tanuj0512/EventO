@@ -1,0 +1,28 @@
+.container{
+    display: flex;    
+    
+}
+
+.PhoneInput.country-list{
+    text-align: left;
+}
+
+.button{
+    position: relative;
+    margin: 30px auto;
+    width: 150px;
+    border-radius: 20px;
+    border: 1px solid  #9757C8;
+    background-color: #9757C8;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold ;
+    padding: 12px 30px;
+    letter-spacing: 1px;
+    
+    text-transform: uppercase;
+}
+
+.phInput{
+    position:relative;
+}

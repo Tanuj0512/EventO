@@ -1,0 +1,301 @@
+
+  
+  /* Slidebar */
+ 
+
+
+  .preview-whole{
+    display: flex;
+    flex-direction: row;
+    gap:25px;
+  }
+
+
+
+
+
+/* preview event  */
+/* *{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+} */
+.container{
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  margin:auto;
+  min-width: 100vw;
+  min-height:100vh;
+  
+}
+
+.P-outerBox{
+  margin: 0;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 1em;
+  margin-left: 7em;
+    padding: 3em;
+    width: 85vw;
+  height: fit-content;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  
+}
+
+
+
+
+.Image{
+  
+  width: 570px;
+  height: 280px;
+  object-fit:cover;
+  margin:auto;
+  /* border: 0.6px solid black; */
+  /* border-radius: 5px; */
+  /* display: block; */
+   
+}
+/* .blur-bg{
+  background: rgb(198,172,183);
+  background: radial-gradient(circle, rgba(198,172,183,1) 0%, rgba(255,255,255,1) 100%);
+  width: 45vw;
+} */
+.Heading{
+  font-size: 17pt;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: start;
+  font-style: italic;
+}
+
+.desc-head{
+  padding-bottom: 50px;
+  /* color: gray; */
+}
+
+.TAG{
+    
+    border-radius: 5px; 
+}
+.tag{
+border: none;
+height: 70px;
+background-color: #ffffff;
+width: 500px;
+text-align: center;
+    
+}
+
+.tag::placeholder {
+  color: #FF0000;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.tag1 {
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  height: 50px;
+  background-color: #fbfbfb;
+  width: 300px;
+  text-align: start;
+}
+.tag11{
+  width: 650px;
+  height: 250px;
+  max-height: fit-content;
+  background-color: #fbfbfb;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  display: flex;
+  text-align: justify;
+  overflow: auto;
+  font-size: medium;
+}
+
+.tag111 {
+  width: 500px;
+  height: 100px;
+  
+  background-color: #fbfbfb;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  display: flex;
+}  
+
+
+
+
+.tag1::placeholder {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.tag11::placeholder {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.tag111::placeholder {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.Heading1 {
+  font-size: 13pt;
+  color: #3F51B5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-style: normal;
+  padding-bottom: 10px;
+}
+.Title{
+  display: flex;
+  flex-direction:column;
+  justify-self: center; 
+  padding: 1.5em;
+ 
+}
+
+
+.lowerbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 75em; 
+  /* background-color: yellow; */
+}
+
+.desc{
+  /* background-color: #43aa08; */
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 1.5em;
+ 
+  
+}
+
+
+.VE-Schedule {
+  background-color: #ffffff;
+  width: 18vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border-radius: 5px;
+  margin: 5vh 3vw;
+    position: -webkit-sticky; /* for browser compatibility */
+    position: sticky;
+    top: 10px;
+    
+   
+ 
+}
+
+.VE-schedule {
+  font-size: x-large;
+  color: #4f4f4f;
+}
+
+.VE-button{
+  height: 6vh;
+  width: 10vw;
+  border-radius: 30px;
+  color: #f6f6f6; 
+  font-size:25px;
+  background: #FF0000;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  cursor: pointer;
+}
+
+
+
+
+/* /1st description/ */
+.Orgdetail{
+  display: flex;
+  gap: 30px;
+  
+}
+.Description{
+  display: flex;
+  flex-direction: column;
+  padding-top: 45px;
+}
+
+
+/* /2st description/ */
+.WW{
+  font-size: 13pt;
+  color: blue; 
+  display: flex;
+  flex-direction: column;
+  
+}
+.DTdes{
+  display: flex;
+  gap: 30px;
+  width: 70vw;
+}
+
+.add{
+  display: flex;
+  gap: 30px;
+  width: 23vw;
+}
+
+/* 3rd Description */
+
+.CD{
+  font-size: 13pt;
+  color: blue; 
+  display: flex;
+  gap: 20px;  
+}
+
+
+input[type="text"]:disabled {
+  background:#ffffff;
+  border: none;
+  font-size: larger;
+  color:#000000;
+}
+input[type="date"]:disabled {
+  background:#ffffff;
+  border: none;
+  font-size: large;
+  color:#000000;
+}
+input[type="time"]:disabled {
+  background:#ffffff;
+  border: none;
+  font-size: large;
+  color:#000000;
+}
+input[type="email"]:disabled {
+  background:#ffffff;
+  border: none;
+  font-size: large;
+  color:#000000;
+}
+input[type="tel"]:disabled {
+  background:#ffffff;
+  border: none;
+  font-size: large;
+  color:#000000;
+}

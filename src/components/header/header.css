@@ -1,0 +1,22 @@
+.border{
+    width: 100vw;
+    height: 11vh;
+    border-bottom: 1pt solid #bfc4ca;
+
+    border-radius: 25px;
+}
+
+nav{
+  position: sticky;
+  top : -70px;
+
+}
+nav.scrolled-down{
+  top:0;
+}
+
+link{
+  cursor: none;
+}
+
+

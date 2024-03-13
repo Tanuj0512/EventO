@@ -1,0 +1,117 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    margin:auto;
+    min-width: 100vw;
+    min-height:100vh;
+}
+
+.outerBox{
+    margin:auto;
+   
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 3%;
+    padding: 3em;
+    width: 80vw;
+    height: 80vh;
+    border-radius: 10px;
+    background: #ffffff;
+    /* border: 1px solid #696969; */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+}
+
+.rectangle {
+  height: 5px;
+  width: 100px;
+  border-radius: 40px;
+  background-color:  rgb(175, 104, 239);
+}
+
+.header1{
+    position: relative;
+    /* text-align: left; */
+    top:10px;    
+    font-size: 2rem;
+    color: #333;
+}
+
+.button{
+    box-sizing: border-box;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 12vw;
+    height: 22vh;
+    top:12vh;
+    margin:3vh;
+    background-color: rgb(175, 104, 239);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000; 
+    border: 0.2px solid #505050;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-size: 2rem;
+    outline: none;
+    transition: 100ms;
+    cursor: pointer;
+}
+
+
+.buttonn{
+    box-sizing: border-box;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 12vw;
+    height: 22vh;
+    top:12vh;
+    margin:3vh;
+    background-color: rgb(255, 255, 255);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000; 
+    border: 1px solid #b2a3a3;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-size: 2rem;
+    outline: none;
+    transition: 100ms;
+    cursor: pointer;
+}
+
+.butsec{
+    display: flex;
+    flex-direction: row;
+   
+    margin-top: 3vh;
+    height: 55vh;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+
+.outerBox button {
+    transition: 100ms;
+    cursor: pointer;
+}
+  
+.outerBox button:disabled {
+    background-color: rgb(255, 0, 0) !important;
+}
+
+.outerBox button:hover {
+    opacity:0.7;
+}
+
+.imgg {
+        height: 25vh;
+        width: 14vw;
+        margin-Top: -2vh;
+        margin-Left: -1vw;
+}

@@ -1,0 +1,86 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 6px 15px;
+    display: block;
+    margin: auto;
+    font-size: 20px;
+    font-weight: 550;
+    font-family: Arial;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    backdrop-filter: blur(1px);
+}
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    background-color: rgba(33, 33, 33, 1);
+    color: #ffffff;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0px 5px;
+    border:1px solid black;
+    font-size: large;
+}
+
+/* Scroll button styles */
+.scroll-button {
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 100px;
+    margin: 2.5vh 5px;
+  }
+  
+  .scroll-button:hover {
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    color: #333;
+  }
+  
+  .scroll-button.left {
+    position: absolute;
+    left: 0vw;
+  }
+  
+  .scroll-button.right {
+    position: absolute;
+    right: 0vw;
+  }
+
+  .copyBtn:hover{
+    transform: scale(1.05);
+  }
+  

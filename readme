@@ -1,0 +1,175 @@
+<!-- {/* <div className="whole" style={{height:"85vh"}}>
+      <div
+        className="schBody"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          
+          margin: "15vh 0vw 1vh",
+         
+        }}
+      >
+        
+
+        <div
+          className="schBody-right"
+          
+        >
+          <br/>
+          
+          <br/>
+
+          <div className="place">
+            <label style={{  fontSize: "20px", paddingBottom:"2vh"}}>Schedule Name</label>
+            <br />
+            <br/>
+            <h2
+              type="text"
+              style={{
+                margin:"auto",
+                width: "35vw",
+                height: "5vh",
+                borderRadius:"5px",
+                placeholder:"Schedule Name",
+                
+              }}
+              value={scheduletitle}
+            >{scheduletitle}</h2>
+            
+          </div>
+          
+
+
+          <div className="EventDates" >
+            <div>
+              <label>Event Start</label>
+              <br />
+            
+              <input disabled
+                placeholder={startDate}
+                type="datetime-local"
+                style={{  width: "15vw", height: "4vh", borderRadius: "4px", border:"1px solid black",backgroundColor: "white"}}
+                value={startDate}
+
+              />
+            </div>
+
+            <div>
+              <label>Event End</label>
+              <br />
+              <input disabled
+                placeholder={endDate}
+                type="datetime-local"
+                style={{  width: "15vw", height: "4vh", borderRadius: "4px", border:"1px solid black",backgroundColor: "white"}}
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+           </div>
+
+           
+          
+           <div className="EventDates">
+            <div>
+              <label>Start Time</label>
+              <br />
+            
+              <input disabled
+                placeholder=" Event Start"
+                type="time"
+                style={{  width: "15vw", height: "4vh", borderRadius: "4px", border:"1px solid black",backgroundColor: "white"}}
+              />
+            </div>
+
+            <div>
+              <label>End Time</label>
+              <br />
+              <input disabled
+                placeholder=" Event End"
+                type="time"
+                style={{  width: "15vw", height: "4vh", borderRadius: "4px",backgroundColor: "white", border:"1px solid black"}}
+              />
+            </div>
+          </div>
+
+          <br/>
+
+          <label>Location</label>
+          <div
+            className="tb"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "35vw",
+              margin:"20px auto",
+              height:"50px",
+            }}
+          >
+            <textarea disabled
+              placeholder="Location..."
+              rows={"10"}
+              cols={"60"}
+              style={{
+                borderRadius: "10px",
+                box_sizing: "border-box",
+                width: "40vw",
+                height: "7vh",
+                background: "#FFFFFF",
+                border: "1px solid #000000",  
+                borderRadius: "10px",
+                margin: "0vh 0vw 2vh",
+                resize: "none",
+              }}
+              value={Venue}
+              onChange={(e) => setVenue(e.target.value)}
+            />
+          </div>
+
+          <label>About</label>
+          
+          <div
+            className="tb"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "35vw",
+              margin: "20px auto",
+            }}
+          >
+            <textarea disabled
+              placeholder="Schedule Brief..."
+              rows={"10"}
+              cols={"60"}
+              style={{
+                borderRadius: "10px",
+                boxSizing: "border-box",
+                width: "40vw",
+                height: "15vh",
+                background: "#FFFFFF",
+                border: "1px solid #000000",
+                borderRadius: "10px",
+                resize: "none",
+              }}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <button onClick={()=>{navigate("/viewsch")}}
+          style={{
+          width: "70px",
+          height: "30px",
+          display: "block",
+          backgroundColor: "rgb(210, 4, 45)",
+          fontFamily: "Roboto",
+          fontSize: "15px",
+          fontWeight: "500",
+          borderRadius: "10px",
+          color: "#FFFFFF",
+          marginTop:"2vh",
+          marginBottom:"-20vh",
+          marginLeft:"18vw",}}>Back</button>
+        </div>
+      </div>
+      
+      
+      </div> */} -->

@@ -1,0 +1,151 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App {
+  width: 100vw;
+  height: 0vh;
+  align-items: center;
+  background: #EDE7F1;
+}
+
+
+
+#footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+ .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} 
+
+  .profile .field {
+  margin-bottom: 10px;
+}
+
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile .field {
+  margin-bottom: 10px;
+} 
+
+  .img_dis{
+    box-sizing: border-box;
+    position: relative;
+
+    width: 200px;
+    height: 10vh;
+    left: 200px;
+    top: 250px;
+    border: 1px solid #000000;
+    }
+
+    .eventIMG{
+      color: transparent;
+    }
+    .eventIMG::-webkit-file-upload-button{
+      visibility: hidden;
+    }
+    .eventIMG::before {
+      content: '+';
+      color: #000000;
+      display: inline-block;
+      background: linear-gradient(top, #f9f9f9, #e3e3e3);
+      border: 1px solid #999;
+      border-radius: 5px;
+      padding: 5px 8px;
+      outline: none;
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+      text-shadow: 1px 1px #fff;
+      font-weight: 700;
+      font-size: 10pt;
+      height: 15px;
+      text-align: center;
+      background-color: #E3CAF9;
+    }
+    .eventIMG:hover::before {
+      border-color: #000000;
+    }
+    .eventIMG:active::before {
+      background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
+
+
+
+
+.profile-image{
+  background-color:#fff;
+
+    border-width:2px;
+
+    border-style:solid;
+
+    border-bottom-color:#aaa;
+
+    border-right-color:#aaa;
+
+    border-top-color:#ddd;
+
+    border-left-color:#ddd;
+
+    border-radius:3px;
+
+    -moz-border-radius:3px;
+
+    -webkit-border-radius:3px;
+}
+
+
+

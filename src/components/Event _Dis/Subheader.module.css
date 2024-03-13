@@ -1,0 +1,133 @@
+.container{
+  display:flex;
+  flex-direction: column;
+  margin:1vh 7vw;
+}
+
+.header{
+  display:flex;   
+  font-size: 1.2em;
+  font-style: oblique;
+  margin: 1vh 3vw ;
+  align-items: flex-start;
+}
+  
+.headerbtn{
+  display: flex;
+  flex-direction: row;
+  max-width: 85vw;
+  margin:2vh 2vw;
+  align-items: center;
+}
+
+.btn {
+ 
+    background-color: white;
+    --color: #9757C8;
+    font-family: inherit;
+    display: inline-block;
+    width: 6em;
+    height: 2.6em;
+    line-height: 2.4em;
+    overflow: hidden;
+    cursor: pointer;
+    margin:0 0.7vw;
+    font-size: 17px;
+    z-index: 1;
+    color: var(--color);
+    border: 2px solid var(--color);
+    border-radius: 6px;
+    position: relative;
+    }
+  
+  
+    .btn::before {
+      position: absolute;
+      content: "";
+      background: var(--color);
+      width: 150px;
+      height: 200px;
+      z-index: -1;
+      border-radius: 50%;
+    }
+    
+    .btn:hover {
+      color: white;
+    }
+    
+    .btn:before {
+      top: 100%;
+      left: 100%;
+      transition: 0.3s all;
+    }
+    
+    .btn:hover::before {
+      top: -30px;
+      left: -30px;
+    }
+    /* create btn */
+
+
+/* All events button  */
+
+.alleventsbtn{
+  display: flex;
+  margin: 0 0 0 auto; 
+}
+
+
+.cssbuttonsiobutton {
+  background: #607D8B;;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #607D8B;;
+  overflow: hidden;
+  position:relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  justify-self: flex-end;
+}
+
+.cssbuttonsiobutton .iconn {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #607D8B;;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttonsiobutton:hover .iconn {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttonsiobutton .iconn svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #607D8B;;
+}
+
+
+.cssbuttonsiobutton:hover .iconn svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttonsiobutton:active .iconn {
+  transform: scale(0.95);
+}

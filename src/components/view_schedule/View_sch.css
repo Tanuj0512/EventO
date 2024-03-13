@@ -1,0 +1,103 @@
+.header_sch #empty_space_header {
+  display: none !important;
+}
+/* .sch_box1 {
+  width: 85%;
+  height: 50px;
+  margin: 4vh auto;
+  font-weight: bolder;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  align-items: flex-start;
+
+}
+
+.calendar_schedule{
+  margin: 10vh 0vw;
+}
+
+
+
+.contentt{
+  width:42em;
+  height:10em;
+  overflow:hidden;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #fbf6ff;
+
+}
+
+.mainVS{
+  margin-left: 0vw;
+}
+
+ */
+
+
+
+
+
+.modalButton {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 12px 24px;
+}
+
+.scheduleright {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-height: fit-content;
+  width: 40vw;
+  border-radius: 5px;
+  /* border: 1.5px solid #898989; */
+}
+
+.contentt{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 7vh;
+  width: 40vw;
+  border: 1.5px solid #ded9d9;
+  border-radius: 5px;
+  margin-bottom: 2vh;
+}
+
+.VS-view {
+ width: 5vw;
+ height: 3vh;
+ cursor: pointer;
+  
+}
+
+.VS-title {
+  font-size: x-large;
+  padding: 1.5vh;
+  color: #212121;
+}
+.VS-view {
+  width: 6vw;
+  height: 5vh;
+  font-size: large;
+  border-radius: 5px;
+  border: 0.5px solid gray;
+  background-color: blueviolet;
+  color: white;
+}
+
+.VS-But {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 1.5vh;
+}
+
