@@ -15,7 +15,7 @@ import Users from "./components/auth/Users/Users";
 //import Home from "./components/auth/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import  Calendar  from "./components/Calendar/Calendar";
-import Calendaratnd from "./components/Calendar/Calendaratnd"
+// import Calendaratnd from "./components/Calendar/Calendaratnd"
 import LandingPage from "./components/landing_page/LandingPage";
 import ViewEvent from "./components/view_event/View_event";
 import EventInput from "./components/event/event";
@@ -42,7 +42,7 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/aboutus" element={<Aboutus/>}/>
             <Route path="/calendar" element={<Calendar/>}/>;
-            <Route path="/calendaratnd" element={<Calendaratnd/>}/>;
+            {/* <Route path="/calendaratnd" element={<Calendaratnd/>}/>; */}
             <Route path="/orgevents" element={<OrgEvents/>}/>;
             <Route path="/orghome" element={<Orghome/>}/>;
             <Route path="/attendevents" element={<AttendEvents/>}/>;
