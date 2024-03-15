@@ -27,7 +27,7 @@ export const SubHeader = () => {
           <button
             className={styles.btn}
             onClick={() => {
-              sessionStorage.getItem("type") ?(navigate("/Calendar")):(navigate("/Calendaratnd"));
+              sessionStorage.getItem("type") ?(navigate("/Calendar")):(navigate("/Calendar"));
             }}
           >
             Calendar

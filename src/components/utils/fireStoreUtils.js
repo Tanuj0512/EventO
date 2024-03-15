@@ -42,8 +42,8 @@ export const addEventToDatabase = async () => {
       //sessionStorage.setItem("eventId",eventId);
       //dispatch(eventIdValue);
       
-      const EventStart = new Date(startDate);
-      const EventEnd = new Date(endDate);
+      const EventStart = startDate;
+      const EventEnd = endDate;
       const usertype=sessionStorage.getItem("type");
       console.log(usertype)
       await setDoc(doc(db, "user",sessionId,"OrgEvents", eventId),{Id: eventId,Title: eventTitle})

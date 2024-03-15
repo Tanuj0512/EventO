@@ -17,7 +17,7 @@ import { CgComponents } from "react-icons/cg";
 import DropdownWithTextField from "./dropdown";
 import Venue from "./Venue";
 import Ticket from "./tickets";
-import Image from "./image";
+import dayjs from "dayjs";
 
 const PageOne = ({ onButtonClick }) => {
   let eventId = "";
@@ -461,7 +461,7 @@ const PageOne = ({ onButtonClick }) => {
                         placeholder=" Event Start"
                         type="date"
                         value={startDate}
-                        onChange={ (e) =>{ setStartDate(Date(e.target.value)) ; console.log(e.target.value);}}
+                        onChange={ (e) =>{ setStartDate(dayjs(e.target.value).format("MMMM D,YYYY")) ; console.log(e.target.value);}}
                         
                       />
                       <input
@@ -481,7 +481,7 @@ const PageOne = ({ onButtonClick }) => {
                         placeholder=" Event End"
                         type="date"
                         value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                        onChange={(e) => setEndDate(dayjs(e.target.value).format("MMMM D,YYYY"))}
                       />
                       <input
                         class="CE-input_sch"

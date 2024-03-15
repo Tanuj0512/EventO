@@ -123,7 +123,7 @@ function Event_dis() {
                 </button>
 
                 <div className={styles.sideButtons}>
-                  {sessionStorage.getItem("type") ? (
+                  {sessionStorage.getItem("type")===true ? (
                     <OrgMenu eventId={event.eventId} />
                   ) : (
                     <AttendMenu eventId={event.eventId} />

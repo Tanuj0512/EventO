@@ -8,6 +8,8 @@ import "./Orghome.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
+import dayjs from "dayjs";
+// import moment from "moment";
 
 function Orghome() {
   const [events, setEvents] = useState([]);
@@ -47,8 +49,8 @@ function Orghome() {
         const imageUrl = eventData.Event_IMAGE;
         const eventname = eventData.Event_name;
         const eventaddress = eventData.Event_address;
-        const eventStartTimestamp = eventData.Event_start;
-        const eventStartDate = eventStartTimestamp?.toDate();
+        const eventStartDate = eventData.Event_start;
+        //const eventStartDate = eventStartTimestamp?.toDate();
         const eventId = eventData.Event_id;
         // console.log("Empty !");
         // console.log(sessionStorage.getItem("viewEventId"));
@@ -73,10 +75,6 @@ function Orghome() {
     }
   };
 
-  const formatDate = (date) => {
-    const options = { day: "numeric", month: "long", year: "numeric" };
-    return date.toLocaleDateString("en-US", options);
-  };
   useEffect(() => {
     fetchEventData();
   }, []);
@@ -142,7 +140,7 @@ function Orghome() {
                   <div className={styles.eventDetails}>
                     {event.eventStartDate && (
                       <p className={styles.detaildiv}>
-                        {formatDate(event.eventStartDate)}
+                        {dayjs(event.eventStartDate).format("MMMM D, YYYY")}
                       </p>
                     )}
 
@@ -184,147 +182,3 @@ function Orghome() {
   );
 }
 export default Orghome;
-
-{
-  /* <div className="no-events-to-show-img" style={{ paddingBottom: "5vh" }}>
-        <div className="event-des-header">
-          <div className="event-des-header-left">
-            <h3 style={{ color: " rgb(61, 61, 61)" }}>Event</h3>
-          </div>
-
-          <div className="event-des-header-right">
-            <div>
-              <h3 id="cd"> Date</h3>
-            </div>
-            <div>
-              <h3 id="cdd">Mode</h3>
-            </div>
-            <div>
-              <h3 id="cddd">Slots</h3>
-            </div>
-          </div>
-        </div>
-
-
-        {buffer ? (
-          <div className="outerBut">
-            {events.map((event, index) => (
-              <button className="testi">
-                <button
-                  onClick={() => {
-                    sessionStorage.setItem("viewEventId", event.eventId);
-                    navigate("/viewevent");
-                  }}
-                  className="event_item"
-                  key={index}
-                >
-                  {event.imageUrl ? (
-                    <img
-                      src={event.imageUrl}
-                      style={{
-                        display: "unset",
-                        margin: "auto 2vw",
-                        width: "13vh",
-                        height: "11vh",
-                        border: "1px solid black",
-                        borderRadius: "5px",
-                        objectFit: "fit",
-                      }}
-                      alt="Event"
-                    />
-                  ) : (
-                    <img
-                      className="eventimg"
-                      src="https://firebasestorage.googleapis.com/v0/b/event-o-4e544.appspot.com/o/event%2Fdownload.png?alt=media&token=97505771-db30-410d-80af-a6ff564e1066"
-                      style={{}}
-                    />
-                  )}
-                  <div
-                    classname="event-des-org"
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      width: "72vw",
-                      height: "12vh",
-                      margin: " 2vh 0vw -1vh 1vw",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div className="evtName" style={{ width: "30vw" }}>
-                      <p
-                        className="event-name-org"
-                        style={{
-                          color: "red",
-                          fontSize: "20px",
-                          fontWeight: "600",
-                          display: "flex",
-                          alignItems: "start",
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {event.eventname}
-                      </p>
-                    </div>
-                    {event.eventStartDate && (
-                      <p
-                        className="event-date-org"
-                        style={{
-                          fontSize: "16px",
-                          marginLeft: "5.5vw",
-                        }}
-                      >
-                        {formatDate(event.eventStartDate)}
-                      </p>
-                    )}
-
-                    <p
-                      className="event-mode-org"
-                      style={{
-                        fontSize: "16px",
-                        marginLeft: "8vw",
-                      }}
-                    >
-                      online
-                    </p>
-
-                    <p
-                      className="event-slot-org"
-                      style={{
-                        fontSize: "16px",
-                        marginLeft: "11.5vw",
-                      }}
-                    >
-                      500
-                    </p>
-                  </div>
-                </button>
-
-                <div className="sideButtons">
-                  <div className="sideButtons">
-                    <AttendMenu eventId={event.eventId} />{" "}
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        ) : (
-          <div className="noEvents">
-            
-            <img
-              src="cal.png "
-              style={{
-                width: "11vw",
-                height: "20vh",
-                margin: "8vh",
-                marginBottom: "0vh",
-              }}
-            ></img>
-            <div className="no-events-to-show-text">
-              <h3 style={{ color: "gray" }}>
-                You haven't created any events yet !
-              </h3>
-            </div>
-          </div>
-        )}
-      </div> */
-}

@@ -1,0 +1,93 @@
+.outerBut{
+    align-content: center;
+    margin:auto;
+  }
+  
+  /* HOVER BUTTON */
+  .eventButton{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow:rgb(183, 144, 222) 0px 2px 4px 0px, rgb(255 255 255 / 22%) 0px 0px 1px;
+    width: 95%;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    margin: 0.5vh 0.7vw;
+    z-index: 0;
+    margin:auto;
+  }
+  .eventButton:hover{
+    transform: scale(1.005);
+  }
+  
+  .event_item{
+    display: flex;
+    transition: all .3s ease;
+    flex-direction: row;
+    align-content: center;
+    margin: 1vh 0vw 0vh 0vw;
+    align-items: center;
+    width: 94%;
+    height: 12vh;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: bold;
+    /* border: 0.5px solid; */
+  }
+  
+  .eventDesc{
+    display: flex;
+    width: 60%;
+    align-content: center;
+    color:#712287;
+  
+  }
+  
+  .eventDetails{
+    display: flex;
+    position: relative;
+    width: 30%;
+    justify-content: space-around;
+  }
+  
+  .detaildiv{
+    width:126px;
+    overflow: hidden; 
+  }
+  
+  
+  .sideButtons{
+    display: flex;
+    position:relative;
+    padding: 0;
+    align-self:center;
+    justify-content: center;
+    z-index: 0;
+    width: 4%;
+    margin:0;
+    transform: rotate(90deg);
+  }
+  
+  .event_item:hover {
+    transform: scale(1.01);
+  }
+  
+  .createEventImg  {
+    display: unset;
+    margin: 1vh 0vw;
+    width: 6vw;
+    height: 10vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    object-fit:cover;
+    justify-self: auto;
+    
+  }
+  .evtName{
+    padding:4% 6%;
+    font-size: x-large;
+    text-transform: uppercase;
+    margin-left: 1vw;
+  }
