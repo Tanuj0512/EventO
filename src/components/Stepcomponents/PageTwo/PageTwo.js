@@ -29,7 +29,7 @@ const PageTwo = ({onButtonClick}) => {
               onClick={() => {
                 addEventToDatabase();
                 onButtonClick("pagethree")}}
-              > Save & Continue </button> 
+              > Next </button> 
                 </div>
                 
           </div>

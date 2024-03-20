@@ -3,9 +3,24 @@ import "./PageOne.css";
 import * as Components from "../../auth/Signup/Components";
 import { storage, db } from "../../../config/firebase";
 import { useForm } from "react-hook-form";
-import { setDoc, collection, query, where, documentId, getDocs,} from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL, lisAll, list, uploadBytesResumable,} from "firebase/storage";
+import {
+  setDoc,
+  collection,
+  query,
+  where,
+  documentId,
+  getDocs,
+} from "firebase/firestore";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  lisAll,
+  list,
+  uploadBytesResumable,
+} from "firebase/storage";
 import { v4 } from "uuid";
+import { toast, Toaster } from "react-hot-toast";
 import Header from "../../header/header";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +34,7 @@ import Venue from "./Venue";
 import Ticket from "./tickets";
 import dayjs from "dayjs";
 
-const PageOne = ({ onButtonClick }) => {
+const PageOne = ({onButtonClick }) => {
   let eventId = "";
   const defaultFile = banner;
   const [fileAddress, setFileAddress] = useState(defaultFile);
@@ -30,7 +45,7 @@ const PageOne = ({ onButtonClick }) => {
   const [plannerLastName, setPlannerLastName] = useState("");
   const [eventAbout, setEventAbout] = useState("");
   const [venue, setVenue] = useState("");
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState("");
   const [timeZone, setTimeZone] = useState("");
   const [notification, setNotification] = useState(false);
@@ -42,7 +57,7 @@ const PageOne = ({ onButtonClick }) => {
   const [count, setCount] = useState();
   const [imageUrls, setImageUrls] = useState([]);
   const [percentage, setPercentage] = useState(0);
-  const [eventStatus, setEventStatus] = useState("online");
+  const [eventStatus, setEventStatus] = useState("Online");
   const [location, setLocation] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [otherValue, setOtherValue] = useState("");
@@ -59,29 +74,14 @@ const PageOne = ({ onButtonClick }) => {
   useEffect(() => {
     console.log(sessionId);
     console.log(currentEventId);
-    const handleOnline = () => {
-      setEventStatus("online");
-    };
-
-    const handleOffline = () => {
-      setEventStatus("offline");
-    };
-
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
     // let defaultData=fetchEventData();
     //console.log("")
     //fetchEventData();
-  }, [imageUrls, eventId, currentEventId,]);
+  }, [imageUrls, eventId, currentEventId]);
 
-  const imageUpload = (data) => {
+  const imageUpload = () => {
     //if (file == null) return null;
-    console.log("inside upload", data);
+    // console.log("inside upload", data);
     const imageRef = ref(storage, `eventImages/${currentEventId}`);
     //
     const uploadTask = uploadBytesResumable(imageRef, file, metadata);
@@ -131,7 +131,7 @@ const PageOne = ({ onButtonClick }) => {
           console.log("File available at", downloadURL);
           //console.log("link",imgurl,imageUrls);
           //addEventToDatabase(data, imgurl);
-          sessionStorage.setItem("imageUrl",downloadURL);
+          sessionStorage.setItem("imageUrl", downloadURL);
           console.log(sessionStorage.getItem("imageUrl"));
           console.log(currentEventId);
           onButtonClick("pagetwo");
@@ -154,33 +154,32 @@ const PageOne = ({ onButtonClick }) => {
       endDate,
       mobile,
       email,
-      sessionId,  
+      sessionId,
       eventStatus,
     };
 
-    
-    sessionStorage.setItem("eventTitle",eventTitle);
-    sessionStorage.setItem("eventCategory",eventCategory);
-    sessionStorage.setItem("venue",venue);
-    sessionStorage.setItem("eventAbout",eventAbout);
-    sessionStorage.setItem("startDate",startDate);
-    sessionStorage.setItem("endDate",endDate);
-    sessionStorage.setItem("eventStatus",eventStatus);
-    sessionStorage.setItem("startTime",startTime);
-    sessionStorage.setItem("endTime",endTime);
-    sessionStorage.setItem("sessionId",sessionId);
-    
+    sessionStorage.setItem("eventTitle", eventTitle);
+    sessionStorage.setItem("eventCategory", eventCategory);
+    sessionStorage.setItem("venue", venue);
+    sessionStorage.setItem("eventAbout", eventAbout);
+    sessionStorage.setItem("startDate", startDate);
+    sessionStorage.setItem("endDate", endDate);
+    sessionStorage.setItem("eventStatus", eventStatus);
+    sessionStorage.setItem("startTime", startTime);
+    sessionStorage.setItem("endTime", endTime);
+    sessionStorage.setItem("sessionId", sessionId);
+    sessionStorage.setItem("count",count);
 
     // console.log("B4 Upload ",eventTitle);
-    await imageUpload(eventData);
+    await imageUpload();
 
     console.log("Saved Moving To Details");
     // onButtonClick("pagetwo");
   };
 
-
   const handleDropdownChange = (event) => {
     const value = event.target.value;
+    setSelectedOption(value);
     setEventCategory(value);
 
     if (value !== "others") {
@@ -210,8 +209,6 @@ const PageOne = ({ onButtonClick }) => {
   const handleChangeLocation = (e) => {
     setVenue(e.target.value);
   };
-
-
 
   return (
     <div className="PG-one-whole">
@@ -346,12 +343,12 @@ const PageOne = ({ onButtonClick }) => {
                           <option value="option1">Entertainment</option>
                           <option value="option2">Sports</option>
                           <option value="option3">Community</option>
-                          <option value="option3">Business</option>
-                          <option value="option3">Art</option>
-                          <option value="option3">Technology</option>
-                          <option value="option3">Religious</option>
-                          <option value="option3">Environmental</option>
-                          <option value="option3">Educational</option>
+                          <option value="option4">Business</option>
+                          <option value="option5">Art</option>
+                          <option value="option6">Technology</option>
+                          <option value="option7">Religious</option>
+                          <option value="option8">Environmental</option>
+                          <option value="option9">Educational</option>
                           <option value="others">Others</option>
                         </select>
 
@@ -361,7 +358,6 @@ const PageOne = ({ onButtonClick }) => {
                               class="CE-input-part"
                               placeholder="other"
                               type="text"
-                              id="otherInput"
                               value={otherValue}
                               onChange={handleOtherInputChange}
                             />
@@ -405,7 +401,7 @@ const PageOne = ({ onButtonClick }) => {
                       </label>
                     </div>
 
-                    {eventStatus === "online" ? (
+                    {eventStatus === "Online" ? (
                       <div className="CE-address">
                         <label class="CE-label1">
                           Platform
@@ -425,7 +421,7 @@ const PageOne = ({ onButtonClick }) => {
                           <input
                             class="CE-input-title"
                             type="text"
-                            value={location}
+                            value={venue}
                             onChange={handleChangeLocation}
                           />
                         </label>
@@ -461,8 +457,10 @@ const PageOne = ({ onButtonClick }) => {
                         placeholder=" Event Start"
                         type="date"
                         value={startDate}
-                        onChange={ (e) =>{ setStartDate(dayjs(e.target.value).format("MMMM D,YYYY")) ; console.log(e.target.value);}}
-                        
+                        onChange={(e) => {
+                          setStartDate(e.target.value);
+                          console.log(e.target.value);
+                        }}
                       />
                       <input
                         class="CE-input_sch"
@@ -481,7 +479,7 @@ const PageOne = ({ onButtonClick }) => {
                         placeholder=" Event End"
                         type="date"
                         value={endDate}
-                        onChange={(e) => setEndDate(dayjs(e.target.value).format("MMMM D,YYYY"))}
+                        onChange={(e) => setEndDate(e.target.value)}
                       />
                       <input
                         class="CE-input_sch"
@@ -516,17 +514,6 @@ const PageOne = ({ onButtonClick }) => {
         </div>
       </div>
       <div>
-        {/* <input
-            className="f6 grow br2 ph3 pv2 mb2 dib white"
-            style={{
-              borderStyle: "none",
-              width: "20%",
-              backgroundColor: "#664DE5",
-            }}
-            type="submit"
-            value="Create Workspace"
-            onClick={() => onButtonClick("pagetwo")}
-          /> */}
         <footer>
           <div className="footer-butn">
             <div className="footer-twobt">
@@ -536,8 +523,9 @@ const PageOne = ({ onButtonClick }) => {
                 id="submit"
                 className="evtSave"
                 value="Create Workspace"
-                onClick={() => {
+                onClick={(e) => {
                   handleSubmission();
+                  toast("Please Wait till till next Page Loads")
                   // onButtonClick("pagetwo");
                 }}
               >

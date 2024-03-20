@@ -1,0 +1,186 @@
+.AI-modalBackground {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  margin-top: -16vh;
+  margin-left: -2vw;
+}
+
+.AI-modalContainer {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 12px;
+  background-color: #f6f6f6;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.AI-modalContainer .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.AI-titleCloseBtn {
+  display: flex;
+  flex-direction: row;
+  align-self: end;
+  justify-content: flex-end;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  background-color: #FF5722;
+  border-radius: 4px;
+}
+
+.AI-titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  
+  cursor: pointer;
+}
+
+.AI-modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.AI-modalContainer .footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AI-modalContainer .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#AI-cancelBtn {
+  background-color: crimson;
+}
+
+.AI-close-button{
+  
+    /* border: none; */
+    position: relative;
+    width: 3em;
+    height: 2em;
+    border: none;
+    background: #FF5722;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.TS-container {
+  margin-top: -9vh;
+  padding: 30px;
+  height: fit-content;
+  width: 55vw;
+}
+
+.TS-container h2 {
+  color: rgb(43 45 56);
+  text-align: center;
+  font-size: 48px;
+  letter-spacing: -0.2px;
+  font-family: "Merriweather", serif;
+}
+
+.TS-container p {
+  max-width: 50rem;
+  text-align: center;
+}
+
+.TS-main-content {
+  max-width: 50rem;
+  width: 100%;
+  min-height: 400px;
+  height: auto;
+  padding: 18px 18px 120px 18px;
+  position: relative;
+  resize: none;
+  /* box-shadow: 0 12px 48px 0px rgb(109 117 141 / 20%); */
+  background: rgb(255 255 255);
+  border: 0.5px solid rgb(231 233 245);
+  border-radius: 16px;
+}
+
+.TS-main-content:focus {
+  border: 0.3px solid rgb(43, 45, 56, 0.3);
+  outline: none;
+}
+
+.TS-main-content {
+  font-size: 20px;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 1.2;
+  text-align: justify;
+}
+
+.TS-Buttons {
+  display: flex;
+}
+
+.TS-Buttons button {
+  /* position: absolute; */
+  background: rgb(17 166 131);
+  color: rgb(255 255 255);
+  border-radius: 6px;
+  padding: 16px 32px;
+  border: none;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin: auto;
+  display: flex;
+  position: relative;
+  margin-top: -80px;
+  cursor: pointer;
+}
+
+.TS-Buttons button:focus,
+.TS-Buttons button:hover {
+  background: rgb(42, 201, 164);
+  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.1);
+}
+
+.counter-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.TS-Buttons button {
+  position: relative;
+  padding: 12px 35px;
+  background: #4c83fa;
+  font-size: 17px;
+  font-weight: 1000;
+  color: #ffffff;
+  border: 3px solid #4c83fa;
+  border-radius: 8px;
+  box-shadow: 0 0 0 #ffffff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}

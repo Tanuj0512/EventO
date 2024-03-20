@@ -13,7 +13,7 @@ body.active-modal {
     border-radius: 15px;
 }
 
-.modal, .overlay {
+.modal, .overlayyy {
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -23,7 +23,7 @@ body.active-modal {
     position: fixed;
 }
 
-.overlay {
+.overlayyy {
     backdrop-filter: blur(1px);
 }
 .modal-content {

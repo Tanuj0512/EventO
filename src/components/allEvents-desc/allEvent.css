@@ -1,6 +1,4 @@
-/* *{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
-} */
+/* 
 .container{
     display: flex;  
     flex-direction: column;
@@ -22,12 +20,12 @@
     width: 90vw;
     
     height: fit-content;
-    /* border-radius: 5px; */
+   
     background: #ffffff;
-    /* border: 0.5px solid #000000; */
+   
     display: flex;
     flex-direction: column;
-    /* box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; */
+   
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
     
   }
@@ -41,16 +39,10 @@
     height: 280px;
     object-fit:cover;
     margin:auto;
-    /* border: 0.6px solid black; */
-    /* border-radius: 5px; */
-    /* display: block; */
+    
      
   }
-  /* .blur-bg{
-    background: rgb(198,172,183);
-    background: radial-gradient(circle, rgba(198,172,183,1) 0%, rgba(255,255,255,1) 100%);
-    width: 45vw;
-  } */
+ 
   .Heading{
     font-size: 17pt;
     display: flex;
@@ -62,7 +54,7 @@
   
   .desc-head{
     padding-bottom: 50px;
-    /* color: gray; */
+    
   }
   
   .TAG{
@@ -155,11 +147,9 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 80em; 
-    /* background-color: yellow; */
   }
   
   .desc{
-    /* background-color: #43aa08; */
     width: 70%;
     height: auto;
     display: flex;
@@ -182,7 +172,7 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     border-radius: 5px;
     margin: 5vh 3vw;
-      position: -webkit-sticky; /* for browser compatibility */
+      position: -webkit-sticky; 
       position: sticky;
       top: 10px;
       
@@ -209,7 +199,7 @@
   
   
   
-  /* /1st description/ */
+ 
   .Orgdetail{
     display: flex;
     gap: 30px;
@@ -222,7 +212,7 @@
   }
   
   
-  /* /2st description/ */
+ 
   .WW{
     font-size: 13pt;
     color: blue; 
@@ -242,7 +232,6 @@
     width: 23vw;
   }
   
-  /* 3rd Description */
   
   .CD{
     font-size: 13pt;
@@ -281,4 +270,4 @@
     border: none;
     font-size: large;
     color:#000000;
-  }
+  } */

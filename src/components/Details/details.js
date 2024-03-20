@@ -107,7 +107,7 @@ function Details() {
               <label class="D-label"> 
                 Address</label>
               <input
-                placeholder="Name"
+                placeholder="Address"
                 type=" text"
                 class="D-input-name"
                 onChange={(e)=>{setPlannerAddress(e.target.value)}}
@@ -146,7 +146,7 @@ function Details() {
 
           <div className="D-name">
           <label class="D-label"
-              >Linkdein</label>
+              >Linkedin</label>
             <input 
             class="D-input-phone"
             placeholder="Linkdein" type="text"

@@ -93,7 +93,7 @@ export default function ShareBtn() {
 
       {modal && (
         <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
+          <div onClick={toggleModal} className="overlayyy"></div>
           <div className="modal-content">
             <h2>Share</h2>
             <div

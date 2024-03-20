@@ -1,0 +1,48 @@
+.button-icon {
+    display: flex;
+    border: 3px #fff solid;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
+  
+ 
+  
+  
+  
+  .cube {
+    transition: all 0.4s;
+    transform-style: preserve-3d;
+   
+  }
+  
+  
+  
+  .button-icon:hover .cube {
+    transform: rotateX(90deg);
+  }
+  
+  .side {
+    position: absolute;
+    height: 35px;
+    width: 200px;
+    display: flex;
+    font-size: 0.8em;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+  }
+  
+  .top {
+    background: #664DE5;
+    color: #fff;
+    transform: rotateX(-90deg) translate3d(0, 13.5px, 2em);
+  }
+  
+  .front {
+    background:#664DE5;
+    color: #fff;
+    transform: translate3d(0, 0, 1em);
+  }

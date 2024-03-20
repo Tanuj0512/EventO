@@ -17,16 +17,14 @@ export const OrgWindow = () => {
   useEffect(() => {
     fetchEventData();
   }, [selectDate]);
-  
-let data_info="";
 
-  if (sessionStorage.getItem("type")){
-    data_info="OrgEvents";
-  }
-  else{
-    data_info="AttendEvents"
-  }
+  let data_info = "";
 
+  if (sessionStorage.getItem("type")) {
+    data_info = "OrgEvents";
+  } else {
+    data_info = "AttendEvents";
+  }
 
   const fetchEventData = async () => {
     try {
@@ -59,7 +57,7 @@ let data_info="";
         const imageUrl = eventData.Event_IMAGE;
         const eventname = eventData.Event_name;
         const eventaddress = eventData.Event_address;
-        const eventStartDate = dayjs(eventData.Event_start.toDate()).$d;
+        const eventStartDate = dayjs(eventData.Event_start).$d;
         // console.log(eventStartDate);
         // const eventStartDate = eventStartTimestamp?.toDate();
         const eventId = eventData.Event_id;
@@ -140,10 +138,12 @@ let data_info="";
               </button>
 
               <div className={styles.sideButtons}>
-                {sessionStorage.getItem("type")?(<OrgMenu eventId={event.eventId} />):(<AttendMenu eventId={event.eventId}/>)
-                
-                }
-                </div>
+                {sessionStorage.getItem("type") ? (
+                  <OrgMenu eventId={event.eventId} />
+                ) : (
+                  <AttendMenu eventId={event.eventId} />
+                )}
+              </div>
             </button>
           ))}
         </div>

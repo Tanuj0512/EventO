@@ -1,4 +1,4 @@
-.header_schedule #empty_space_header {
+/* .header_schedule #empty_space_header {
   display: none !important;
 }
 
@@ -11,36 +11,19 @@
 }
 
 
-/* input {
-  margin-top: 0rem;
-}
 
-input::placeholder {
-  font-weight: bold;
-  opacity: 0.5;
-  color: red;
-} */
 ::placeholder {
   color: gray;
-  opacity: 1; /* Firefox */
+  opacity: 1; 
   font-size: medium;
   padding: 1vh 0vw 0vh 2vh;
 }
 
-::-ms-input-placeholder { /* Edge 12 -18 */
+::-ms-input-placeholder { 
   color: gray;
 }
 
-/* input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #000000;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: medium;
-} */
+
 
 .whole{
   background-color: #f2e2fe;
@@ -84,7 +67,7 @@ input::placeholder {
   flex-direction: row;
   justify-content: space-evenly;
   width: 59vw;
-  /* margin-right: 22px; */
+ 
   margin-left: -158px;
   
 }
@@ -108,11 +91,11 @@ input::placeholder {
 }
 
 .CS-event_title {
-  /* align-self: center; */
+  
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  /* padding: 2vh; */
+  
   height: 11vh;
   justify-content: space-evenly;
 }
@@ -122,9 +105,58 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  /* padding: 2vh; */
+  
   height: 46vh;
+  justify-content: space-evenly;
+} */
+
+.CS-session {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-bottom: 2vh;
+  height: 14vh;
   justify-content: space-evenly;
 }
 
 
+.CS-heading{
+  font-size: 25px;
+  font-weight: 800;
+  margin-left: 1vw;
+  align-self: baseline;
+   display: flex;
+}
+.CS-subHeading{
+  margin-left: 1vw;
+  color: gray;
+  display: flex;
+   display: flex;
+}
+.CS-tophead {
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  margin-left: 10vw;
+  width: 80vw;
+  justify-content: space-between;
+  /* background-color: antiquewhite; */
+}
+
+.CS-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.CS-addMore{
+  margin-left: -56vw;
+  width: 107px;
+  height: 30px;
+  background-color: #F44336;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: white;
+}

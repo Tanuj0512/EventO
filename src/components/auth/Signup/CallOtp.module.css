@@ -26,3 +26,11 @@
 .phInput{
     position:relative;
 }
+
+.signup_gap {
+    height: 100vh;
+    /* background-color: blueviolet; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

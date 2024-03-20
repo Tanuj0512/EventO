@@ -1,12 +1,12 @@
 
 import "./Modal.css";
 import React, { useState, useEffect } from "react";
-import { storage, db } from "../../config/firebase";
+import { db } from "../../config/firebase";
 import { getDocs,collection,addDoc,deleteDoc,updateDoc,doc,} from "firebase/firestore";
 import {ref,uploadBytes,getDownloadURL,listAll,list,} from "firebase/storage";
 
 import { useNavigate } from "react-router-dom";
-import Viewsch from "../view_schedule/View_sch"
+import Viewsch from "../view_schedule/View_sch";
 
 
 const Modal = ({ open, onClose }) => {
@@ -23,9 +23,10 @@ const Modal = ({ open, onClose }) => {
   const navigate = useNavigate();
   const eventRef = doc(db, "event", "8OkkhqzX1clf3U0FoZJ5");
   const scheduleRef = collection(eventRef, "schedule");
-  
+
   useEffect(() => {
     fetchScheduleData();
+    // sessionStorage.setItem("currScheduleId",schedule.scheduleTitle);
   }, [imageUrls]);
   
   const viewEventId = sessionStorage.getItem("viewEventId");
@@ -76,23 +77,14 @@ const Modal = ({ open, onClose }) => {
       >
         
         <div className='modalRight'>
-          <p className='closeBtn' onClick={onClose}>
+          {/* <p className='closeBtn' onClick={onClose}>
           <button class="close_button">
             <span class="X"></span>
             <span class="Y"></span>
             <div class="close">Close</div>
           </button>
-          </p>
-          <div className='content'>
-            
-            <h1 style={{
-                  fontFamily:" sans-serif",
-                  fontWeight: " 800",
-                  color: "#3b0000",
-                  fontSize: "x-large",
-            }}>Schedules</h1>
-            
-          </div>
+          </p> */}
+          
           <div className='btnContainer'>
           
       <Viewsch/>

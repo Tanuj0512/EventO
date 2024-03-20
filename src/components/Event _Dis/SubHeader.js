@@ -7,7 +7,7 @@ console.log(btnType);
 
 export const SubHeader = () => {
   const navigate = useNavigate();
-
+  const sessionId = sessionStorage.getItem("idValue");
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -27,7 +27,9 @@ export const SubHeader = () => {
           <button
             className={styles.btn}
             onClick={() => {
-              sessionStorage.getItem("type") ?(navigate("/Calendar")):(navigate("/Calendar"));
+              sessionStorage.getItem("type")
+                ? navigate("/Calendar")
+                : navigate("/Calendar");
             }}
           >
             Calendar
@@ -39,6 +41,8 @@ export const SubHeader = () => {
             <button
               class="continue-application"
               onClick={() => {
+                sessionStorage.setItem("eventId", sessionId + -+Date.now());
+                console.log(sessionId + -+Date.now());
                 navigate("/crtevnets");
               }}
             >

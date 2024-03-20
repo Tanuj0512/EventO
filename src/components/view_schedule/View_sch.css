@@ -40,6 +40,68 @@
 
 
 
+/* 
+.modalButton {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 12px 24px;
+}
+
+.scheduleright {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-height: fit-content;
+  width: 40vw;
+  border-radius: 5px;
+ 
+}
+
+.contentt{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 7vh;
+  width: 40vw;
+  border: 1.5px solid #ded9d9;
+  border-radius: 5px;
+  margin-bottom: 2vh;
+}
+
+.VS-view {
+ width: 5vw;
+ height: 3vh;
+ cursor: pointer;
+  
+}
+
+.VS-title {
+  font-size: x-large;
+  padding: 1.5vh;
+  color: #212121;
+}
+.VS-view {
+  width: 6vw;
+  height: 5vh;
+  font-size: large;
+  border-radius: 5px;
+  border: 0.5px solid gray;
+  background-color: blueviolet;
+  color: white;
+}
+
+.VS-But {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 1.5vh;
+} */
+
+
 
 .modalButton {
   position: fixed;
@@ -101,3 +163,99 @@
   padding-right: 1.5vh;
 }
 
+
+
+
+.rwt__tabs[data-rwt-vertical="true"] {
+  display: flex;
+}
+
+.rwt__tablist:not([aria-orientation="vertical"]) {
+  border-bottom: 1px solid #ddd;
+}
+
+.rwt__tablist[aria-orientation="vertical"] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-right: 1px solid #ddd;
+  margin-right: 1rem;
+}
+
+.rwt__tab {
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.6rem 1.5rem;
+  transition: background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  font-size: large;
+  background-color: #dcdff1;
+  border-radius: 3px;
+}
+
+.rwt__tab[aria-selected="false"]:hover,
+.rwt__tab:focus {
+  outline: 0;
+  background-color: #96ccff;
+  border-radius: 3px;
+  color: white;
+  font-size: large;
+
+}
+
+.rwt__tab[aria-selected="true"] {
+  position: relative;
+}
+
+.rwt__tab[aria-selected="true"]:after {
+  content: "";
+  position: absolute;
+}
+
+.rwt__tablist:not([aria-orientation="vertical"])
+  .rwt__tab[aria-selected="true"]:after {
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  border-bottom: 4px solid orange;
+}
+
+.rwt__tablist[aria-orientation="vertical"]
+  .rwt__tab[aria-selected="true"]:after {
+  right: -1px;
+  top: 0;
+  height: 100%;
+  border-right: 4px solid orange;
+}
+
+
+.VE-test {
+  display: flex;
+  flex-direction: row;
+  
+width: 70vw;
+justify-content: space-between;
+}
+
+.MuiTabs-root.css-1ujnqem-MuiTabs-root {
+  display: flex;
+  width: 8vw;
+  /* background-color: red; */
+}
+.Tabbox {
+  /* background-color: aliceblue; */
+  width: 60vw;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  font-size: large;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+button#mui-p-36193-T-Day\ 1 {
+  font-size: large;
+  color: #212121;
+}

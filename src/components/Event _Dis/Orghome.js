@@ -49,7 +49,7 @@ function Orghome() {
         const imageUrl = eventData.Event_IMAGE;
         const eventname = eventData.Event_name;
         const eventaddress = eventData.Event_address;
-        const eventStartDate = eventData.Event_start;
+        const eventStartDate = dayjs(eventData.Event_start).$d;
         //const eventStartDate = eventStartTimestamp?.toDate();
         const eventId = eventData.Event_id;
         // console.log("Empty !");

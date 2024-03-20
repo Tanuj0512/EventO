@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AttendMenu, OrgMenu } from "../utils/menuWrap";
 import { SubHeader } from "./SubHeader";
+import dayjs from "dayjs";
 function Event_dis() {
   const [events, setEvents] = useState([]);
   const [buffer, setBuffer] = useState(true);
@@ -29,7 +30,7 @@ function Event_dis() {
           const eventname = eventData.Event_name;
           const eventaddress = eventData.Event_venue;
           const eventStartTimestamp = eventData.Event_start;
-          const eventStartDate = eventStartTimestamp.toDate();
+          const eventStartDate = dayjs(eventData.Event_start).$d;
           const eventId = eventData.Event_id;
           // console.log("Empty !");
           // console.log(sessionStorage.getItem("viewEventId"));
@@ -123,7 +124,7 @@ function Event_dis() {
                 </button>
 
                 <div className={styles.sideButtons}>
-                  {sessionStorage.getItem("type")===true ? (
+                  {sessionStorage.getItem("type") === true ? (
                     <OrgMenu eventId={event.eventId} />
                   ) : (
                     <AttendMenu eventId={event.eventId} />
