@@ -136,14 +136,8 @@ const View_event = () => {
       </div>
       <div className="VE-imgOverlay">
         <div className="outerBox">
-          <div className="Title">
-            <input
-              disabled={edit}
-              onChange={(e) => setEventName(e.target.value)}
-              value={eventName}
-              className="EventName"
-            ></input>{" "}
-            {sessionStorage.getItem("type") ? (
+          <div className="VE-EditBut">
+          {sessionStorage.getItem("type") ? (
               edit == true ? (
                 <div className="EditButton">
                   <button
@@ -170,6 +164,15 @@ const View_event = () => {
             ) : (
               <button className="btn"> Map Event</button>
             )}
+          </div>
+          <div className="Title">
+            <input
+              disabled={edit}
+              onChange={(e) => setEventName(e.target.value)}
+              value={eventName}
+              className="EventName"
+            ></input>{" "}
+           
           </div>
           <div className="VE-upperBox">
             <div className="VE-internalLeft">
@@ -303,9 +306,9 @@ const View_event = () => {
                 About Event
               </b>
               <div className="VE-About">
-                <input
+                <textarea
                   disabled={edit}
-                  className="viewtag11"
+                  className="VE-viewtag11"
                   value={eventAbout}
                   onChange={(e) => setEventAbout(e.target.value)}
                 />{" "}

@@ -54,11 +54,18 @@ img.VE-generalImg {
   
   
 }
-
+.VE-EditBut {
+  padding-top: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* background-color: antiquewhite; */
+  width: 95%;
+}
 .Title {
   display: flex;
   margin: 3vh;
-  padding: 15px 0px 30px 0px;
+  padding: 0px 0px 5px 0px;
   font-size: 3em;
   font-weight: 600;
   background-image: radial-gradient(circle, #553c9a, #ee4b2b);
@@ -69,9 +76,9 @@ img.VE-generalImg {
 }
 
 .EventName{
-  width:80%;
-  margin-left: 10%;
-  padding: 15px 0px 30px 0px;
+  width:100%;
+  text-align: center;
+  padding: 15px 0px 0px 0px;
   font-size: 40px;
   font-weight: 600;
   background-image: radial-gradient(circle, #553c9a, #ee4b2b);
@@ -306,6 +313,20 @@ img.VE-Image {
   display: flex;
   padding: 1vh 2vw 6vh;
 }
+
+textarea.VE-viewtag11 {
+  resize: none;
+  overflow: hidden;
+  width: 35vw;
+  resize: block;
+  height: 50vh;
+  padding-left: 3vw;
+  padding: 1vh 1vh 1vh 2vh;
+  background-color: white;
+  border: none;
+  text-align: justify;
+}
+
 /* 
 .outerBox{
   margin: auto;

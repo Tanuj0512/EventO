@@ -73,7 +73,7 @@ function Headerevent() {
     return date.toLocaleDateString("en-US", options);
   };
 
-  return (
+  return ( 
     <div
       className="Event_dis"
       style={{ display: "flex", flexDirection: "column" , marginLeft : "4vw"}}
