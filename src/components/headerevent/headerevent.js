@@ -76,7 +76,7 @@ function Headerevent() {
   return (
     <div
       className="Event_dis"
-      style={{ display: "flex", flexDirection: "column" }}
+      style={{ display: "flex", flexDirection: "column" , marginLeft : "4vw"}}
     >
       <div className="header">
         <Header />
