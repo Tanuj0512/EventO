@@ -158,7 +158,7 @@ function View_sch() {
                       class="SS-input_sch"
                       // onChange={(e) => setEndDate(e.target.value)}
                     >
-                      {schedule.scheduleStartDate}
+                      {schedule.scheduleStartDate}- start Time
                     </span>
                   </div>
 
@@ -196,7 +196,7 @@ function View_sch() {
                     class="SS-textarea-desc"
                     onChange={(e) => setDescription(e.target.value)}
                   >
-                    {schedule.scheduleDescription}
+                    {schedule.scheduleVenue}
                   </span>
                 </div>
               </div>

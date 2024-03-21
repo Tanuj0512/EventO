@@ -51,13 +51,14 @@
 
 
 .SS-textarea-desc {
+  text-align: justify;
   flex-direction: row;
   display: flex;
   max-height: 40vh;
-  font-size: larger;
+  font-size: medium;
   height: -moz-fit-content;
   height: fit-content;
-  width: 500px;
+  width: 700px;
   background-color: #ffffff1c;
   color: #242424;
   padding: 1rem 0rem;
@@ -65,7 +66,6 @@
   outline: none;
   border: 0.5px solid #ffffff;
   line-height: 1.15;
-  
 }
 
 .SS-input_sch {

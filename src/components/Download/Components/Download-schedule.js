@@ -70,92 +70,84 @@ function DownloadSchedule() {
   return (
     <div>
       <div className="D-CE-heading">Schdeules</div>
+      {schedules.map((schedule, index) => (
+        <div>
+          <div className="D-event_title">
+            <label class="Dlabel" placeholder="D-Schedule Name">
+              Schedule Name
+            </label>
 
-      <div >
-        <div className="D-event_title">
-          <label class="Dlabel" placeholder="D-Schedule Name">
-            Schedule Name
-          </label>
+            <span class="D-input-title">{scheduletitle}</span>
+          </div>
 
-          <span
-            
-            class="D-input-title"
-            
-          >{scheduletitle}</span>
-        </div>
+          <div className="D-Schedule">
+            <div className="D-session">
+              <label class="Dlabel">Schedule Begin</label>
 
+              <div className="D-box">
+                <span
+                  class="D-input_sch"
+                 
+                  onChange={(e) => setEndDate(e.target.value)}
+                >
+                  {schedule.scheduleStartDate}
+                </span>
 
-        <div className="D-Schedule">
-          <div className="D-session">
-            <label class="Dlabel">Schedule Begin</label>
+                <input
+                  disabled
+                  class="D-input_sch"
+                  placeholder=" Event Start"
+                  type="time"
+                />
+              </div>
+            </div>
 
-            <div className="D-box">
-              <span
-                
-                class="D-input_sch"
-                
-                value={startDate}
-                onChange={(e) => setEndDate(e.target.value)}
-              >{startDate}</span>
-
-              <input
-                disabled
-                class="D-input_sch"
-                placeholder=" Event Start"
-                type="time"
-              />
+            <div className="D-session">
+              <label class="Dlabel">Schedule End</label>
+              <div className="D-box">
+                <span
+                  class="D-input_sch"
+                  onChange={(e) => setEndDate(e.target.value)}
+                >
+                   {schedule.scheduleEndDate}
+                </span>
+                <input
+                  disabled
+                  class="D-input_sch"
+                  placeholder=" Event Start"
+                  type="time"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="D-session">
-            <label class="Dlabel">Schedule End</label>
-            <div className="D-box">
-              <span
-                
-                class="D-input_sch"
-                
-                
-               
-                onChange={(e) => setEndDate(e.target.value)}
-              >{endDate}</span>
-              <input
-                disabled
-                class="D-input_sch"
-                placeholder=" Event Start"
-                type="time"
-              />
-            </div>
+          <div className="D-event_title">
+            <label class="Dlabel" placeholder="Schedule Name">
+              Location
+            </label>
+
+            <span
+              class="D-input-title"
+              onChange={(e) => setVenue(e.target.value)}
+            >
+              {schedule.scheduleVenue}
+            </span>
+          </div>
+
+          <div className="D-event_desc">
+            <label htmlFor="Event Description" class="Dlabel">
+              Event Description
+            </label>
+
+            <span
+              class="D-textarea-desc"
+              onChange={(e) => setDescription(e.target.value)}
+            >
+             {schedule.scheduleVenue}
+            </span>
           </div>
         </div>
-
-        <div className="D-event_title">
-          <label class="Dlabel" placeholder="Schedule Name">
-            Location
-          </label>
-
-          <span
-           
-            class="D-input-title"
-           
-            onChange={(e) => setVenue(e.target.value)}
-          >{Venue}</span>
-        </div>
-
-        <div className="D-event_desc">
-          <label htmlFor="Event Description" class="Dlabel">
-            Event Description
-          </label>
-
-          <span
-           class="D-textarea-desc"
-            
-            
-            onChange={(e) => setDescription(e.target.value)}
-          >{description}</span>
-        </div>
-      </div>
-
-    
+      ))}
     </div>
   );
 }

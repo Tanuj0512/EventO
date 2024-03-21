@@ -115,6 +115,7 @@ img.VE-Image {
 
 .VE-internalLeft {
   /* xbackground-color: beige; */
+  z-index: -1;
   width: 35vw;
   object-fit: contain;
   display: flex;
@@ -316,10 +317,11 @@ textarea.VE-viewtag11 {
   padding-left: 3vw;
   padding: 1vh 1vh 1vh 2vh;
   background-color: white;
+  color: #242424;
   border: none;
   text-align: justify;
   line-height: 25px;
-  font-size: larger;
+  font-size: medium;
   max-height: max-content;
 }
 .Event-butns {

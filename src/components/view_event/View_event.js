@@ -21,6 +21,7 @@ import date from "./images/schedule.png";
 import sider from "./images/sider.png";
 import Download from "../Download/download.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import Schedules from "../view_schedule/View_sch.js";
 
 const View_event = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -47,7 +48,6 @@ const View_event = () => {
     fetchEventData();
   }, []);
 
-  
   const navigate = useNavigate();
   const data = {
     Event_name: eventName,
@@ -129,11 +129,6 @@ const View_event = () => {
     return `${day}-${month}-${year}`;
   }
 
-
-  
-
-
-
   return (
     <div className="container">
       <div className="navbar">
@@ -175,8 +170,12 @@ const View_event = () => {
             </div>
             <div className="Socials">
               <div className="Download-but">
-                
-                <button class="Btn" onClick={() => {navigate("/download")}}>
+                <button
+                  class="Btn"
+                  onClick={() => {
+                    navigate("/download");
+                  }}
+                >
                   <svg
                     class="svgIcon"
                     viewBox="0 0 384 512"
@@ -187,13 +186,11 @@ const View_event = () => {
                   </svg>
                   <span class="icon2"></span>
                   <span class="tooltip">Download</span>
-                  
                 </button>
               </div>
 
-              <div className="Share-btn" >
-                <ShareBtn/>
-                
+              <div className="Share-btn">
+                <ShareBtn />
               </div>
             </div>
           </div>
@@ -342,10 +339,8 @@ const View_event = () => {
                   className="VE-viewtag11"
                   value={eventAbout}
                   onChange={(e) => {
-                    
                     setEventAbout(e.target.value);
                   }}
-                 
                 />{" "}
               </div>
 
@@ -417,8 +412,10 @@ const View_event = () => {
                 {openModal ? "Hide " : "Show "}
               </button>
             </div>
-            <Modal open={openModal} onClose={() => setOpenModal(false)} />
-         
+            {/* <Modal open={openModal} onClose={() => setOpenModal(false)} /> */}
+            <div>
+              <Schedules />
+            </div>
             {/* <div className="sharebtn">
               <ShareBtn />
             </div> */}
