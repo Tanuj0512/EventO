@@ -19,8 +19,8 @@ import Modal from "../Modal/Modal.jsx";
 import location from "./images/venue.png";
 import date from "./images/schedule.png";
 import sider from "./images/sider.png";
+import Download from "../Download/download.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-
 
 const View_event = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -47,6 +47,8 @@ const View_event = () => {
     fetchEventData();
   }, []);
 
+  
+  const navigate = useNavigate();
   const data = {
     Event_name: eventName,
     Event_category: eventCategory,
@@ -127,6 +129,11 @@ const View_event = () => {
     return `${day}-${month}-${year}`;
   }
 
+
+  
+
+
+
   return (
     <div className="container">
       <div className="navbar">
@@ -136,34 +143,59 @@ const View_event = () => {
       </div>
       <div className="VE-imgOverlay">
         <div className="outerBox">
-          <div className="VE-EditBut">
-          {sessionStorage.getItem("type") ? (
-              edit == true ? (
-                <div className="EditButton">
+          <div className="Event-butns">
+            <div className="VE-EditBut">
+              {sessionStorage.getItem("type") ? (
+                edit == true ? (
+                  <div className="EditButton">
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        setEdit(!edit);
+                        //navigate("/myprofileupdate");
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </div>
+                ) : (
                   <button
                     className="btn"
                     onClick={() => {
+                      saveData();
                       setEdit(!edit);
-                      //navigate("/myprofileupdate");
                     }}
                   >
-                    Edit
+                    Save
                   </button>
-                </div>
+                )
               ) : (
-                <button
-                  className="btn"
-                  onClick={() => {
-                    saveData();
-                    setEdit(!edit);
-                  }}
-                >
-                  Save
+                <button className="btn"> Map Event</button>
+              )}
+            </div>
+            <div className="Socials">
+              <div className="Download-but">
+                
+                <button class="Btn" onClick={() => {navigate("/download")}}>
+                  <svg
+                    class="svgIcon"
+                    viewBox="0 0 384 512"
+                    height="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <span class="icon2"></span>
+                  <span class="tooltip">Download</span>
+                  
                 </button>
-              )
-            ) : (
-              <button className="btn"> Map Event</button>
-            )}
+              </div>
+
+              <div className="Share-btn" >
+                <ShareBtn/>
+                
+              </div>
+            </div>
           </div>
           <div className="Title">
             <input
@@ -172,7 +204,6 @@ const View_event = () => {
               value={eventName}
               className="EventName"
             ></input>{" "}
-           
           </div>
           <div className="VE-upperBox">
             <div className="VE-internalLeft">
@@ -310,7 +341,11 @@ const View_event = () => {
                   disabled={edit}
                   className="VE-viewtag11"
                   value={eventAbout}
-                  onChange={(e) => setEventAbout(e.target.value)}
+                  onChange={(e) => {
+                    
+                    setEventAbout(e.target.value);
+                  }}
+                 
                 />{" "}
               </div>
 
@@ -383,10 +418,10 @@ const View_event = () => {
               </button>
             </div>
             <Modal open={openModal} onClose={() => setOpenModal(false)} />
-            {/* {show && <div>Toggle Challenge</div>} */}
-            <div className="sharebtn">
+         
+            {/* <div className="sharebtn">
               <ShareBtn />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
