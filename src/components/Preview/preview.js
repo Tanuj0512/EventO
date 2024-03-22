@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { storage, db } from "../../config/firebase";
-import { setDoc, collection, addDoc, deleteDoc, updateDoc, doc, Timestamp,} from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL, lisAll, list,} from "firebase/storage";
+import {
+  setDoc,
+  collection,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Timestamp,
+  orderBy,
+} from "firebase/firestore";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  lisAll,
+  list,
+} from "firebase/storage";
 import { v4 } from "uuid";
 import Header from "../header/header";
 import "./preview.css";
@@ -10,17 +25,16 @@ import { useNavigate } from "react-router-dom";
 import banner from "../auth/Signup/overlay-background.jpg";
 import { addEventToDatabase } from "../utils/fireStoreUtils";
 //import { eventIdValue, usertype } from "../auth/Signup/Slice";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
-import Aside from "../aside/aside"
+import Aside from "../aside/aside";
 // import { db } from "../../config/firebase";
-import { query, where, getDocs,  documentId,} from "firebase/firestore";
+import { query, where, getDocs, documentId } from "firebase/firestore";
 
 // import { setDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 // import { useSelector } from "react-redux";
 
-
-const Preview=()=> {
+const Preview = () => {
   let eventId = "";
   const defaultFile = banner;
   const [fileAddress, setFileAddress] = useState(defaultFile);
@@ -31,14 +45,14 @@ const Preview=()=> {
   const [eventAbout, setEventAbout] = useState("");
   const [eventStart, setEventStart] = useState(null); // Initialize with null
   const [eventCategory, setEventCategory] = useState("");
-  const [schedule, setSchedule] = useState("");
-  const [eventOrganizer,setEventOrganizer] = useState("");
-  const [eventContact,setEventContact] = useState("");
-  const [eventMobile,setEventMobile] = useState("");
-  const [eventEmail,setEventEmail] = useState("");
-  const navigate= useNavigate();
-  const viewEventId =sessionStorage.getItem("eventId");
-  
+  // const [schedule, setSchedule] = useState("");
+  const [eventOrganizer, setEventOrganizer] = useState("");
+  const [eventContact, setEventContact] = useState("");
+  const [eventMobile, setEventMobile] = useState("");
+  const [eventEmail, setEventEmail] = useState("");
+  const navigate = useNavigate();
+  const viewEventId = sessionStorage.getItem("eventId");
+const [schedules, setSchedule] = useState([]);
   const fetchEventData = async () => {
     try {
       const eventsCollectionRef = collection(db, "event");
@@ -74,11 +88,39 @@ const Preview=()=> {
         setEventEmail(eventEmail);
         console.log(eventOrganizer);
         console.log(imageUrl);
-        sessionStorage.setItem("currEvent",eventname);
+        sessionStorage.setItem("currEvent", eventname);
       }
     } catch (error) {
       console.error("Error retrieving event data:", error);
       console.log(viewEventId);
+    }
+  };
+
+  const fetchScheduleData = async () => {
+    const scheduleCollectionRef = query(
+      collection(db, "event", viewEventId, "schedule"),
+      orderBy("schedule_startDate")
+    );
+    const scheduleQuerySnapshot = await getDocs(scheduleCollectionRef);
+    const scheduleList = [];
+    if (!scheduleQuerySnapshot.empty) {
+      scheduleQuerySnapshot.forEach((doc) => {
+        const scheduleData = doc.data();
+        const scheduleTitle = scheduleData.schedule_title;
+        const scheduleStartDate = scheduleData.schedule_startDate;
+        const scheduleEndDate = scheduleData.schedule_endDate;
+        const scheduleVenue = scheduleData.schedule_Venue;
+        const scheduleDescription = scheduleData.schedule_description;
+
+        scheduleList.push({
+          scheduleTitle,
+          scheduleStartDate,
+          scheduleEndDate,
+          scheduleVenue,
+          scheduleDescription,
+        });
+      });
+      setSchedule(scheduleList);
     }
   };
 
@@ -88,7 +130,7 @@ const Preview=()=> {
 
   //   //if (file == null) return null;
   //   const imageRef = ref(storage, `testingphoto/${viewEventId}`);
-    
+
   //   uploadBytes(imageRef, file).then((snapshot) => {
   //     getDownloadURL(snapshot.ref).then((url) => {
   //       console.log("imageref", url);
@@ -117,148 +159,170 @@ const Preview=()=> {
   const sessionId = sessionStorage.getItem("idValue");
   useEffect(() => {
     fetchEventData();
-  },[])
+  }, []);
   //var createId=idValue + eventTitle;
 
-
-  
   return (
     <div>
-      
-  <div className="preview-whole">
-      
-  
+      <div className="preview-whole">
+        {/* /Info  */}
 
-
-
-{/* /Info  */}
-
-
-        <div className="for-footer" style={{display:"flex", flexDirection:"column"}}>
-        <div className="P-outerBox">
-        
-         
-           
-           <div className="blur-bg">
-              <div className="Image">
-                {imageUrl ? 
-                (<img src={imageUrl} className="Image" alt="Event"/>) 
-                : 
-                (<img className="Image" src="https://firebasestorage.googleapis.com/v0/b/event-o-4e544.appspot.com/o/event%2Fdownload.png?alt=media&token=97505771-db30-410d-80af-a6ff564e1066"
-                alt="Placeholder" />)
-                }
+        <div
+          className="for-footer"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <div className="P-outerBox">
+            <div className="P-blur-bg">
+              <div className="P-Image">
+                {imageUrl ? (
+                  <img src={imageUrl} className="P-Image" alt="Event" />
+                ) : (
+                  <img
+                    className="P-Image"
+                    src="https://firebasestorage.googleapis.com/v0/b/event-o-4e544.appspot.com/o/event%2Fdownload.png?alt=media&token=97505771-db30-410d-80af-a6ff564e1066"
+                    alt="Placeholder"
+                  />
+                )}
               </div>
             </div>
-          
-        
-          <div className="Title">
-            <input  placeholder={eventName} className="tag "  style={{fontSize:"40px"}} disabled></input>
-          </div>
-            
-         
-          
-          
-        <div className="lowerbox" style={{width:"75vw"}}>
-            <div className="desc">
-                  <div className= "Heading" >
-                  <b className="desc-head">About Event</b>
-                  
-                      <div className="Orgdetail">
-                        <div className="VE1">
-                          <label className="Heading1" for="Organiser" >Organiser</label> 
-                        
-                          <input placeholder={eventOrganizer} className="tag1 "disabled/>
-                        </div>
-                        <div className="VE2">
-                          <label className="Heading1" for="EventCategory" >Type</label>
-                          <input placeholder={eventCategory} className="tag1"  disabled/>
-                        </div>
-                      </div>
 
-                      <div className="Description">
-                          <label className="Heading1" for="description">Description </label>
-                         
-                          <span className="tag11">
-                          {eventAbout}
-                          </span>
-                      </div>
-                  </div>
-                  
-                  <div className="Heading">
-                    <b className="desc-head">When And Where</b>
-                  
+            <div className="P-Title">
+              <span className="P-tag ">{eventName}</span>
+            </div>
 
-                      <div className="WW" >
-                      <div className="Where"  style={{display:"flex", flexDirection:"row"}}>
+            <div className="P-lowerbox" style={{ width: "75vw" }}>
+              <div className="P-desc">
+                <div className="P-Heading">
+                  <b className="P-desc-head">About Event</b>
 
-                        <div className="VE1" >
-                        <label className="Heading1" for="Date" >Date</label>
-                         
-                          <input type="date" placeholder={eventStart} className="tag1"  disabled/>
-                        </div>
-                        <div className="VE2">
-                        <label className="Heading1" for="Time" >Time</label>
-                          <input type="time" placeholder={eventStart} className="tag1"  disabled/>
-                        </div>
-                      </div>  
-                        <div className="Description">
-                        <label className="Heading1" for="Address" >Address</label>
-                          <input  placeholder={eventaddress} className="tag111"  disabled/>
-                        </div>
-                      </div>
-                  </div>
-                  
-                  <div className="Heading">
-                    <b className="desc-head">Contact Details</b>
-                    
-                    
-                    <div className="CD">
-                      <div className="VE1">
+                  <div className="P-Orgdetail">
+                    <div className="P-VE1">
+                      <label className="P-Heading1" for="P-Organiser">
+                        Organiser
+                      </label>
 
-                    
-                        <label className="Heading1" for="Phone" >Mobile</label>
-                        
-                        <input  placeholder={eventMobile} pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" className="tag1" id =" hed" disabled/>
-                      </div>
-
-                      <div className="VE2">
-                        <label className="Heading1" for="email" >Email </label>
-                        <input  placeholder={eventEmail}  className="tag1" disabled/>
-                      </div>
-                    
+                      <span className="P-tag1 ">{eventOrganizer}</span>
+                    </div>
+                    <div className="P-VE2">
+                      <label className="P-Heading1" for="P-EventCategory">
+                        Type
+                      </label>
+                      <span className="P-tag1">{eventCategory}</span>
                     </div>
                   </div>
 
-                  
-              </div>
-              
+                  <div className="P-Description">
+                    <label className="P-Heading1" for="P-description">
+                      Description{" "}
+                    </label>
 
-                <div className="VE-Schedule">
-                  
-                  <div className="VE-schedule" >
-                      <b>Schedule</b>
+                    <span className="P-tag11">{eventAbout}</span>
+                  </div>
+                </div>
+
+                <div className="P-Heading">
+                  <b className="P-desc-head">When And Where</b>
+
+                  <div className="P-WW">
+                    <div
+                      className="P-Where"
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <div className="P-VE1">
+                        <label className="P-Heading1" for="Date">
+                          Date
+                        </label>
+
+                        <input
+                          type="date"
+                          placeholder={eventStart}
+                          className="tag1"
+                          disabled
+                        />
+                      </div>
+                      <div className="P-VE2">
+                        <label className="P-Heading1" for="Time">
+                          Time
+                        </label>
+                        <input
+                          type="time"
+                          placeholder={eventStart}
+                          className="tag1"
+                          disabled
+                        />
+                      </div>
+                    </div>
+                    <div className="P-Description">
+                      <label className="P-Heading1" for="Address">
+                        Address
+                      </label>
+                      <span className="P-tag111">{eventaddress}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="P-Heading">
+                  <b className="P-desc-head">Contact Details</b>
+
+                  <div className="P-CD">
+                    <div className="P-VE1">
+                      <label className="P-Heading1" for="Phone">
+                        Mobile
+                      </label>
+
+                      <span className="P-tag1" id=" hed">
+                        {eventMobile}
+                      </span>
+                    </div>
+
+                    <div className="P-VE2">
+                      <label className="P-Heading1" for="email">
+                        Email{" "}
+                      </label>
+                      <span className="P-tag1">{eventEmail}</span>
+                    </div>
                   </div>
 
-                    <button 
-                    onClick={() => setOpenModal(true)}  
-                    className="VE-button">Show</button>
-                    <Modal
-                      open={openModal}
-                      onClose={() => setOpenModal(false)} />
-                  
+                  <div className="P-CD">
+                    <div className="P-VE1">
+                      <label className="P-Heading1">Linkdein</label>
+
+                      <span className="P-tag1" id=" hed"></span>
+                    </div>
+
+                    <div className="P-VE2">
+                      <label className="P-Heading1">Twitter</label>
+                      <span className="P-tag1"></span>
+                    </div>
+                  </div>
                 </div>
+              </div>
+
+              {/* <div className="VE-Schedule">
+                <div className="VE-schedule">
+                  <b>Schedule</b>
+                </div>
+
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="VE-button"
+                >
+                  Show
+                </button>
+                <Modal open={openModal} onClose={() => setOpenModal(false)} />
+              </div> */}
+
+              <div className="P-Schedule">
+                {schedules.map((schedule, index) => (
+                  <div className="P-schdeuleName">{schedule.scheduleTitle}</div>
+                ))}
+              </div>
             </div>
           </div>
-        
-       
-         
+        </div>
+      </div>
     </div>
-        
-   
-
-</div>
-</div> 
   );
-}
+};
 
 export default Preview;

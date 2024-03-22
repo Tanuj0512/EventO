@@ -27,6 +27,7 @@ import Preview from "./components/Preview/preview";
 import AllEvent from "./components/allEvents-desc/allEvent";
 import CrtEvent from "./components/Stepcomponents/stepper/stepper";
 import ChatbotBox from "./components/chatbot/Chatbot";
+import Download from "./components/Download/download";
 
 function App() {
   console.log("trial log");
@@ -55,6 +56,7 @@ function App() {
             <Route path="/preview" element={<Preview />} />
             <Route path="/allEvent" element={<AllEvent />} />
             <Route path="/crtevnets" element={<CrtEvent />} />
+            <Route path="/download" element={<Download />} />
           </Routes>
         </Router>
       </div>
