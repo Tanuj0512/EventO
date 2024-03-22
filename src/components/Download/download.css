@@ -1,0 +1,247 @@
+.D-Downloadbutton {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 12px 20px;
+  color: white;
+  background: #664de5;
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em rgba(59, 48, 78, 0.527);
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.D-Downloadbutton svg {
+  margin-right: 8px;
+  width: 25px;
+}
+
+.D-Downloadbutton:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em rgba(88, 71, 116, 0.627);
+}
+
+.D-Downloadbutton:active {
+  box-shadow: 0 0.3em 1em -0.5em rgba(88, 71, 116, 0.627);
+}
+
+.D-Downloadbutton::before {
+  content: "";
+  width: 4px;
+  height: 40%;
+  background-color: white;
+  position: absolute;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  left: 0;
+  transition: all 0.2s;
+}
+
+.D-Downloadbutton::after {
+  content: "";
+  width: 4px;
+  height: 40%;
+  background-color: white;
+  position: absolute;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  right: 0;
+  transition: all 0.2s;
+}
+
+.D-Downloadbutton:hover::before,
+.D-Downloadbutton:hover::after {
+  height: 60%;
+}
+
+/* Event details  */
+.D-download_content {
+  margin: auto;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 1em;
+  padding: 0em 3em 3em 3em;
+  width: 80vw;
+  height: -moz-fit-content;
+  height: fit-content;
+  /* border-radius: 5px; */
+  background: #ffffff;
+  /* border: 0.5px solid #000000; */
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+
+}
+.D-Image {
+  width: 400px;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.D-upper {
+  padding-top: 6vh;
+  display: flex;
+  flex-direction: row;
+  /* background-color: aqua; */
+  width: 70vw;
+  justify-content: space-between;
+}
+
+.D-sidebox {
+  /* background-color: antiquewhite; */
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.D-VE1 {
+  padding-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  /* background-color: burlywood; */
+  height: 14vh;
+  width: 26vw;
+  justify-content: space-evenly;
+}
+.D-Description {
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-top: 5vh;
+}
+
+span.D-tag111 {
+  padding-top: 2vh;
+  font-size: larger;
+}
+
+
+span.D-viewtag11 {
+  display: flex;
+  padding-top: 2vh;
+  text-align: justify;
+  line-height: 25px;
+  font-size: larger;
+}
+
+
+label.D-Heading1 {
+  font-size: large;
+  font-style: oblique;
+  color: #F44336;
+}
+
+span.D-tag1 {
+  font-size: larger;
+}
+
+span.D-tag {
+  font-size: 30px;
+  font-weight: 600;
+  
+}
+
+
+.D-scheduleData {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5vh;
+}
+
+
+/* Schedules  */
+
+.D-CE-heading {
+  display: flex;
+  flex-direction: row;
+  font-size: x-large;
+  font-weight: 700;
+}
+
+.D-event_title {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-top: 4vh;
+}
+
+label.Dlabel {
+  font-size: large;
+  font-style: oblique;
+  color: #F44336;
+}
+
+span.D-input-title {
+  padding-top: 2vh;
+  font-size: larger;
+}
+
+
+.D-Schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-top: 3vh;
+  text-align: justify;
+  column-gap: 3vh;
+  /* background-color: aqua; */
+  
+  height: 30vh;
+  justify-content: space-around;
+}
+
+.D-box {
+  padding-top: 2vh;
+}
+
+.D-box {
+  padding-top: 2vh;
+  display: flex;
+  flex-direction: row;
+  width: 20vw;
+  justify-content: space-between;
+  /* background-color: aqua; */
+  font-size: large;
+}
+
+.D-event_desc {
+  padding-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+span.D-textarea-desc {
+  display: flex;
+  padding-top: 2vh;
+  text-align: justify;
+  line-height: 25px;
+  font-size: larger;
+}
+
+.D-Logo {
+ 
+  display: flex;
+  flex-direction: column;
+  width: 74vw;
+  padding-bottom: 6vh;
+}
+
+.D-head {
+  margin: -2vh 0vw 0vh 0vw;
+  font-size: 17px;
+  color: gray;
+  /* border-top: 1px solid gray; */
+}
+
+.D-Title {
+  display: flex;
+}

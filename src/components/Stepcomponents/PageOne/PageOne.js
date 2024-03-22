@@ -34,7 +34,7 @@ import Venue from "./Venue";
 import Ticket from "./tickets";
 import dayjs from "dayjs";
 
-const PageOne = ({onButtonClick }) => {
+const PageOne = ({ onButtonClick }) => {
   let eventId = "";
   const defaultFile = banner;
   const [fileAddress, setFileAddress] = useState(defaultFile);
@@ -168,7 +168,7 @@ const PageOne = ({onButtonClick }) => {
     sessionStorage.setItem("startTime", startTime);
     sessionStorage.setItem("endTime", endTime);
     sessionStorage.setItem("sessionId", sessionId);
-    sessionStorage.setItem("count",count);
+    sessionStorage.setItem("count", count);
 
     // console.log("B4 Upload ",eventTitle);
     await imageUpload();
@@ -279,7 +279,7 @@ const PageOne = ({onButtonClick }) => {
                         />
                       </div>
                     </div>
-                    <div className="CE-image">
+                    <div className="CEE-image">
                       {/* <Image/> */}
                       <div className={`cont ${file ? "active" : ""}`}>
                         <div className="wrapper">
@@ -298,13 +298,21 @@ const PageOne = ({onButtonClick }) => {
                             )}
                           </div>
                         </div>
-
                         <input
                           type="file"
                           id="custom-btn"
                           onChange={(e) => setFile(e.target.files[0])}
+                          style={{ position: "absolute", left: "-9999px" }}
                           accept="image/, video/"
                         />
+                        <label htmlFor="custom-btn" className="ChooseImg">Choose File</label>
+                        {file && <p>File selected: {file.name}</p>}
+                        {/* <input
+                          type="file"
+                          id="custom-btn"
+                          onChange={(e) => setFile(e.target.files[0])}
+                          accept="image/, video/"
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -525,7 +533,7 @@ const PageOne = ({onButtonClick }) => {
                 value="Create Workspace"
                 onClick={(e) => {
                   handleSubmission();
-                  toast("Please Wait till till next Page Loads")
+                  toast("Please Wait till till next Page Loads");
                   // onButtonClick("pagetwo");
                 }}
               >
