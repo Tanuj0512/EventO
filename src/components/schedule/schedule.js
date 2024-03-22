@@ -54,7 +54,7 @@ function Schedule() {
   // };
 
   const handleSchedules = () => {
-
+    
     sessionStorage.setItem("scheduleTitle", scheduletitle);
     sessionStorage.setItem("scheduleVenue", venue);
     sessionStorage.setItem("scheduleAbout", description);

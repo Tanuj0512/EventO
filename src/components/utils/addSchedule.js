@@ -1,17 +1,17 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
-import {doc, setDoc,collection, query, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { doc, setDoc, collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
 export const addscheduleToDatabase = async () => {
   const eventId = sessionStorage.getItem("eventId");
-  let scheduleId= sessionStorage.getItem("scheduleTitle", scheduleId);
-  let venue= sessionStorage.getItem("scheduleVenue", venue);
-  let description= sessionStorage.getItem("scheduleAbout", description);
-  let startDate= sessionStorage.getItem("scheduleStartDate", startDate);
-  let endDate= sessionStorage.getItem("scheduleEndDate", endDate);
-  let startTime= sessionStorage.getItem("scheduleStartTime", startTime);
-  let endTime= sessionStorage.getItem("scheduleEndTime", endTime);
+  let scheduleId = sessionStorage.getItem("scheduleTitle");
+  let venue = sessionStorage.getItem("scheduleVenue");
+  let description = sessionStorage.getItem("scheduleAbout");
+  let startDate = sessionStorage.getItem("scheduleStartDate");
+  let endDate = sessionStorage.getItem("scheduleEndDate");
+  let startTime = sessionStorage.getItem("scheduleStartTime");
+  let endTime = sessionStorage.getItem("scheduleEndTime");
 
   try {
     scheduleId = sessionStorage.getItem("scheduleId");
@@ -25,7 +25,6 @@ export const addscheduleToDatabase = async () => {
       schedule_Venue: venue,
       schedule_description: description,
     });
-
   } catch (err) {
     console.error(err);
   }
