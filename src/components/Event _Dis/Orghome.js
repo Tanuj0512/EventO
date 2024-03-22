@@ -6,6 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 import Header from "../header/header";
 import "./Orghome.css";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteDoc,doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
 import dayjs from "dayjs";
@@ -17,6 +18,10 @@ function Orghome() {
   const navigate = useNavigate();
   const sessionId = sessionStorage.getItem("idValue");
   const [customList, setCustomList] = useState([]);
+
+  let viewEventId= sessionStorage.getItem("viewEventId");
+
+
 
   const fetchEventData = async () => {
     try {
@@ -49,6 +54,7 @@ function Orghome() {
         const imageUrl = eventData.Event_IMAGE;
         const eventname = eventData.Event_name;
         const eventaddress = eventData.Event_address;
+        const eventStatus = eventData.Event_status;
         const eventStartDate = dayjs(eventData.Event_start).$d;
         //const eventStartDate = eventStartTimestamp?.toDate();
         const eventId = eventData.Event_id;
@@ -60,6 +66,7 @@ function Orghome() {
           eventaddress,
           eventStartDate,
           eventId,
+          eventStatus,
         });
       });
       let customEventList = [];
@@ -77,7 +84,8 @@ function Orghome() {
 
   useEffect(() => {
     fetchEventData();
-  }, []);
+
+  }, [OrgMenu]);
 
   let isEvent = true;
   let message = isEvent ? "Welcome back!" : "Please log in.";
@@ -144,9 +152,9 @@ function Orghome() {
                       </p>
                     )}
 
-                    <p className={styles.detaildiv}>online</p>
+                    <p className={styles.detaildiv}>{event.eventStatus}</p>
 
-                    <p className={styles.detaildiv}>500</p>
+                    <p className={styles.detaildiv}></p>
                   </div>
                 </button>
 

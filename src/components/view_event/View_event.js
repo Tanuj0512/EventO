@@ -8,9 +8,12 @@ import {
   getDocs,
   Timestamp,
   documentId,
+  setDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
 import Header from "../header/header";
-import { setDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ShareBtn from "../share/share.js";
@@ -19,6 +22,7 @@ import Modal from "../Modal/Modal.jsx";
 import location from "./images/venue.png";
 import date from "./images/schedule.png";
 import sider from "./images/sider.png";
+import { mapEvent, unMapEvent } from "../utils/mapEvent.js";
 import Download from "../Download/download.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import Schedules from "../view_schedule/View_sch.js";
@@ -37,15 +41,18 @@ const View_event = () => {
   const [schedule, setSchedule] = useState("");
   const [eventOrganizer, setEventOrganizer] = useState("");
   const [eventContact, setEventContact] = useState("");
+  const [eventCount, setEventCount] = useState("");
   const [eventMobile, setEventMobile] = useState("");
   const [eventEmail, setEventEmail] = useState("");
   const [edit, setEdit] = useState(true);
-
+  const [mapStatus, setMapStatus] = useState(false);
   const viewEventId = sessionStorage.getItem("viewEventId");
+  const [mapBtnTxt, setMapBtnTxt] = useState("Map Event");
   let type = sessionStorage.getItem("type");
   //console.log(viewEventId);
   useEffect(() => {
     fetchEventData();
+    mapCheck(viewEventId);
   }, []);
 
   const navigate = useNavigate();
@@ -63,6 +70,7 @@ const View_event = () => {
     Event_About: eventAbout,
     Event_mobile: eventMobile,
     Event_email: eventEmail,
+    Event_count: eventCount,
     // Event_startTime: startTime,
     // Event_endTime: endTime,
   };
@@ -92,7 +100,7 @@ const View_event = () => {
         const eventContact = eventData.Event_Contact;
         const eventEmail = eventData.Event_email;
         const eventMobile = eventData.Event_mobile;
-
+        const eventCount = eventData.Event_count;
         // Convert Firebase Timestamp to JavaScript Date
         const eventStartDate = dayjs(eventData.Event_start).$d;
         const eventEndDate = dayjs(eventData.Event_end).$d;
@@ -111,6 +119,7 @@ const View_event = () => {
         setEventContact(eventContact);
         setEventMobile(eventMobile);
         setEventEmail(eventEmail);
+        setEventCount(eventCount);
         console.log(eventOrganizer);
         console.log(imageUrl);
         sessionStorage.setItem("currEvent", eventname);
@@ -118,6 +127,20 @@ const View_event = () => {
     } catch (error) {
       console.error("Error retrieving event data:", error);
       console.log(viewEventId);
+    }
+  };
+
+  const mapCheck = async (id) => {
+    const sessionId = sessionStorage.getItem("idValue");
+    const collectionRef = collection(db, "user", sessionId, "AttendEvents");
+    const eventQuery = query(collectionRef, where(documentId(), "==", id));
+    const newdata = await getDocs(eventQuery);
+    if (newdata?.docs[0]?.data()) {
+      setMapStatus(true);
+      setMapBtnTxt("Unmap Event");
+    } else {
+      setMapStatus(false);
+      setMapBtnTxt("Map Event");
     }
   };
 
@@ -164,8 +187,26 @@ const View_event = () => {
                     Save
                   </button>
                 )
+              ) : mapStatus ? (
+                <button
+                  className="btn"
+                  onClick={() => {
+                    mapCheck(viewEventId);
+                    unMapEvent(viewEventId);
+                  }}
+                >
+                  {mapBtnTxt}
+                </button>
               ) : (
-                <button className="btn"> Map Event</button>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    mapCheck(viewEventId);
+                    mapEvent(viewEventId);
+                  }}
+                >
+                  {mapBtnTxt}
+                </button>
               )}
             </div>
             <div className="Socials">
@@ -235,19 +276,39 @@ const View_event = () => {
                   <label className="VE-Heading1" for="EventCategory">
                     Type
                   </label>
-                  <input
-                    onChange={(e) => setEventCategory(e.target.value)}
-                    value={eventCategory}
-                    className="tag1"
-                    disabled={edit}
-                  />{" "}
+                  {edit == false ? (
+                    <select
+                      id="CE-dropdown"
+                      value={eventCategory}
+                      onChange={(e) =>{ setEventCategory(e.target.value);console.log(eventCategory,e.target.value)}}
+                      
+                    >
+                      <option value="">Select...</option>
+                      <option value="Entertainment">Entertainment</option>
+                      <option value="Sports">Sports</option>
+                      <option value="Community">Community</option>
+                      <option value="Business">Business</option>
+                      <option value="Art">Art</option>
+                      <option value="Technology">Technology</option>
+                      <option value="Religious">Religious</option>
+                      <option value="Environmental">Environmental</option>
+                      <option value="Educational">Educational</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  ) : (
+                    <span className="tag1">{eventCategory}</span>
+                  )}
                 </div>
 
                 <div className="VE-Nop">
                   <label className="VE-Heading1" for="Nop">
                     No. of participants
                   </label>
-                  <input className="tag1" />
+                  <input
+                    className="tag1"
+                    value={eventCount}
+                    onChange={(e) => setEventCount(e.target.value)}
+                  />
                 </div>
               </div>
 

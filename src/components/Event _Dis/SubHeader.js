@@ -42,7 +42,7 @@ export const SubHeader = () => {
               class="continue-application"
               onClick={() => {
                 sessionStorage.setItem("eventId", sessionId + -+Date.now());
-                console.log(sessionId + -+Date.now());
+                console.log(sessionId +-+Date.now());
                 navigate("/crtevnets");
               }}
             >

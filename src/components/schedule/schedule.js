@@ -40,14 +40,7 @@ function Schedule() {
   //       schedule_description: description,
   //     });
 
-  //     setscheduletitle("");
-  //     setStartDate("");
-  //     setEndDate("");
-  //     setStartTime("");
-  //     setEndTime("");
-  //     setVenue("");
-  //     setNotification(false);
-  //     setDescription("");
+
   //   } catch (err) {
   //     console.error(err);
   //   }
@@ -66,6 +59,15 @@ function Schedule() {
     // addEventToDatabase();
     addscheduleToDatabase();
     toast.success("Schedule Saved Successfully!");
+
+      setscheduletitle("");
+      setStartDate("");
+      setEndDate("");
+      setStartTime("");
+      setEndTime("");
+      setVenue("");
+      setNotification(false);
+      setDescription("");
   };
   return (
     <div className="schedule-whole">

@@ -22,6 +22,7 @@ export const addEventToDatabase = async () => {
   let startTime = sessionStorage.getItem("startTime");
   let endTime = sessionStorage.getItem("endTime");
   let plannerName = sessionStorage.getItem("plannerName");
+  let count = sessionStorage.getItem("count");
   // let plannerLastName = sessionStorage.getItem("plannerLastName");
   let mobile = sessionStorage.getItem("mobile");
   let email = sessionStorage.getItem("email");
@@ -54,6 +55,7 @@ export const addEventToDatabase = async () => {
         Event_category: eventCategory,
         Event_organizor: plannerName,
         Event_venue: venue,
+        Event_count:count,
         Event_start: EventStart,
         Event_end: EventEnd,
         Event_notification: "true",

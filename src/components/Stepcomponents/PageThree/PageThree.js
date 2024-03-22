@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../../../config/firebase";
 import {doc, setDoc,collection, query, getDocs } from "firebase/firestore";
 import { toast, Toaster } from "react-hot-toast";
+import { addscheduleToDatabase } from "../../utils/addSchedule";
 
 const PageThree = ({onButtonClick}) => {
 
@@ -24,33 +25,7 @@ const PageThree = ({onButtonClick}) => {
   const navigate = useNavigate();
   
   
-  const addscheduleToDatabase = async () => {
-    try {
-      scheduleId = sessionStorage.getItem("scheduleId");
-      console.log(scheduleId);
-      await setDoc(doc(db, "event", eventId, "schedule", scheduleId), {
-        schedule_title: scheduleId,
-        schedule_startDate: startDate,
-        schedule_endDate: endDate,
-        schedule_startTime: startTime,
-        schedule_endTime: endTime,
-        schedule_Venue: venue,
-        schedule_notification: notification,
-        schedule_description: description,
-      });
 
-      setscheduletitle("");
-      setStartDate("");
-      setEndDate("");
-      setStartTime("");
-      setEndTime("");
-      setVenue("");
-      setNotification(false);
-      setDescription("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
  
 
     return (

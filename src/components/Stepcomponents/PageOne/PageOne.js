@@ -348,19 +348,19 @@ const PageOne = ({ onButtonClick }) => {
                           onChange={handleDropdownChange}
                         >
                           <option value="">Select...</option>
-                          <option value="option1">Entertainment</option>
-                          <option value="option2">Sports</option>
-                          <option value="option3">Community</option>
-                          <option value="option4">Business</option>
-                          <option value="option5">Art</option>
-                          <option value="option6">Technology</option>
-                          <option value="option7">Religious</option>
-                          <option value="option8">Environmental</option>
-                          <option value="option9">Educational</option>
-                          <option value="others">Others</option>
+                          <option value="Entertainment">Entertainment</option>
+                          <option value="Sports">Sports</option>
+                          <option value="Community">Community</option>
+                          <option value="Business">Business</option>
+                          <option value="Art">Art</option>
+                          <option value="Technology">Technology</option>
+                          <option value="Religious">Religious</option>
+                          <option value="Environmental">Environmental</option>
+                          <option value="Educational">Educational</option>
+                          <option value="Others">Others</option>
                         </select>
 
-                        {selectedOption === "others" && (
+                        {selectedOption === "Others" && (
                           <div>
                             <input
                               class="CE-input-part"

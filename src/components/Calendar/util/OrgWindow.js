@@ -16,7 +16,7 @@ export const OrgWindow = () => {
   let selectDate = sessionStorage.getItem("selectDate");
   useEffect(() => {
     fetchEventData();
-  }, [selectDate]);
+  }, [selectDate,]);
 
   let data_info = "";
 

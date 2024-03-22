@@ -28,11 +28,9 @@ import { addEventToDatabase } from "../utils/fireStoreUtils";
 import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import Aside from "../aside/aside";
-// import { db } from "../../config/firebase";
-import { query, where, getDocs, documentId } from "firebase/firestore";
 
-// import { setDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
-// import { useSelector } from "react-redux";
+import { query, where, getDocs, documentId } from "firebase/firestore";
+import dayjs from "dayjs";
 
 const Preview = () => {
   let eventId = "";
@@ -50,9 +48,13 @@ const Preview = () => {
   const [eventContact, setEventContact] = useState("");
   const [eventMobile, setEventMobile] = useState("");
   const [eventEmail, setEventEmail] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [twitter, setTwitter] = useState("");
   const navigate = useNavigate();
   const viewEventId = sessionStorage.getItem("eventId");
-const [schedules, setSchedule] = useState([]);
+  const [schedules, setSchedule] = useState([]);
   const fetchEventData = async () => {
     try {
       const eventsCollectionRef = collection(db, "event");
@@ -67,25 +69,36 @@ const [schedules, setSchedule] = useState([]);
         const imageUrl = eventData.Event_IMAGE;
         const eventname = eventData.Event_name;
         const eventaddress = eventData.Event_venue;
-        const eventStartTimestamp = eventData.Event_start;
+        const eventlinkedin = eventData.Event_linkedin;
+        const eventtwitter = eventData.Event_twitter;
         const eventAbout = eventData.Event_About;
         const eventOrganizer = eventData.Event_organizor;
         const eventContact = eventData.Event_Contact;
         const eventEmail = eventData.Event_email;
         const eventMobile = eventData.Event_mobile;
-
+        const eventcategory = eventData.Event_category;
         // Convert Firebase Timestamp to JavaScript Date
-        const eventStartDate = eventStartTimestamp.toDate();
+        const eventStartDate = dayjs(eventData.Event_start).$d;
+        const eventEndDate = dayjs(eventData.Event_end).$d;
+        // const eventStartTime = eventData.Event_startTime;
+        // const eventEndTime = eventData.Event_endTime;
 
         setImageUrl(imageUrl);
         setEventName(eventname);
         setEventAddress(eventaddress);
-        setEventStart(eventStartDate);
+        setStartDate(eventStartDate);
+        setEndDate(eventEndDate);
+        // setStartTime(eventStartTime);
+        // setEndTime(eventEndTime);
         setEventAbout(eventAbout);
+        setEventCategory(eventcategory);
         setEventOrganizer(eventOrganizer);
         setEventContact(eventContact);
         setEventMobile(eventMobile);
         setEventEmail(eventEmail);
+        setEventStart(eventStartDate);
+        setLinkedin(eventlinkedin);
+        setTwitter(eventtwitter);
         console.log(eventOrganizer);
         console.log(imageUrl);
         sessionStorage.setItem("currEvent", eventname);
@@ -123,7 +136,6 @@ const [schedules, setSchedule] = useState([]);
       setSchedule(scheduleList);
     }
   };
-
 
   // const handleAddSchedule = () => {
   //   // Logic to add schedule
@@ -232,24 +244,8 @@ const [schedules, setSchedule] = useState([]);
                         <label className="P-Heading1" for="Date">
                           Date
                         </label>
-
-                        <input
-                          type="date"
-                          placeholder={eventStart}
-                          className="tag1"
-                          disabled
-                        />
-                      </div>
-                      <div className="P-VE2">
-                        <label className="P-Heading1" for="Time">
-                          Time
-                        </label>
-                        <input
-                          type="time"
-                          placeholder={eventStart}
-                          className="tag1"
-                          disabled
-                        />
+                        <span className="tag1">{startDate}</span>
+                        <span className="tag1">{endDate}</span>
                       </div>
                     </div>
                     <div className="P-Description">
@@ -287,36 +283,24 @@ const [schedules, setSchedule] = useState([]);
                     <div className="P-VE1">
                       <label className="P-Heading1">Linkdein</label>
 
-                      <span className="P-tag1" id=" hed"></span>
+                      <span className="P-tag1" id=" hed">
+                        {linkedin}
+                      </span>
                     </div>
 
                     <div className="P-VE2">
                       <label className="P-Heading1">Twitter</label>
-                      <span className="P-tag1"></span>
+                      <span className="P-tag1">{twitter}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* <div className="VE-Schedule">
-                <div className="VE-schedule">
-                  <b>Schedule</b>
-                </div>
-
-                <button
-                  onClick={() => setOpenModal(true)}
-                  className="VE-button"
-                >
-                  Show
-                </button>
-                <Modal open={openModal} onClose={() => setOpenModal(false)} />
-              </div> */}
-
-              <div className="P-Schedule">
+              {/* <div className="P-Schedule">
                 {schedules.map((schedule, index) => (
                   <div className="P-schdeuleName">{schedule.scheduleTitle}</div>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

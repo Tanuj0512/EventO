@@ -336,7 +336,7 @@ select#CE-dropdown {
   font-size: medium;
    
     height: 34px;
-    width: 234px;
+    max-width: 130px;
     color: #242424;
     padding: 0.15rem 0.5rem;
     border-radius: 4px;

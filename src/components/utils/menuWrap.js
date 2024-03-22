@@ -14,6 +14,7 @@ import {
   Timestamp,
   documentId,
   docs,
+  deleteDoc,
 } from "firebase/firestore";
 
 const AttendMenu = (props) => {
@@ -102,11 +103,16 @@ const AttendMenu = (props) => {
 const OrgMenu = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const sessionId = sessionStorage.getItem("idValue");
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const deleteData = async (id) => {
+    deleteDoc(doc(db, "event", id));
+    deleteDoc(doc(db,"user",sessionId,"OrgEvents",id));
   };
 
   return (
@@ -140,7 +146,18 @@ const OrgMenu = (props) => {
       >
         <MenuItem onClick={handleClose}>Download</MenuItem>
         <MenuItem onClick={handleClose}>Share</MenuItem>
-        <MenuItem onClick={handleClose}>Delete</MenuItem>
+        <MenuItem
+          onClick={() => {
+            try {
+              deleteData(props.eventId);
+            } catch {
+              console.log("Cannot be Deleted");
+            }
+            setAnchorEl(null);
+          }}
+        >
+          Delete
+        </MenuItem>
       </Menu>
     </div>
   );
