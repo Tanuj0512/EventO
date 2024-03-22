@@ -412,10 +412,10 @@ const View_event = () => {
                 {openModal ? "Hide " : "Show "}
               </button>
             </div>
-            {/* <Modal open={openModal} onClose={() => setOpenModal(false)} /> */}
-            <div>
+            <Modal open={openModal} onClose={() => setOpenModal(false)} />
+            {/* <div>
               <Schedules />
-            </div>
+            </div> */}
             {/* <div className="sharebtn">
               <ShareBtn />
             </div> */}
