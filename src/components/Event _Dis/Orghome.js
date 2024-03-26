@@ -6,7 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 import Header from "../header/header";
 import "./Orghome.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteDoc,doc } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
 import dayjs from "dayjs";
@@ -19,9 +19,7 @@ function Orghome() {
   const sessionId = sessionStorage.getItem("idValue");
   const [customList, setCustomList] = useState([]);
 
-  let viewEventId= sessionStorage.getItem("viewEventId");
-
-
+  let viewEventId = sessionStorage.getItem("viewEventId");
 
   const fetchEventData = async () => {
     try {
@@ -84,7 +82,6 @@ function Orghome() {
 
   useEffect(() => {
     fetchEventData();
-
   }, [OrgMenu]);
 
   let isEvent = true;
@@ -158,7 +155,7 @@ function Orghome() {
                   </div>
                 </button>
 
-                <div className={styles.sideButtons}>
+                <div className={styles.sideButtons} >
                   <OrgMenu eventId={event.eventId} />{" "}
                 </div>
               </button>

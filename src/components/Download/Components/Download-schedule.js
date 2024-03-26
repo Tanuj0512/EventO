@@ -9,6 +9,7 @@ import {
   query,
   where,
   documentId,
+  orderBy
 } from "firebase/firestore";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -25,47 +26,43 @@ function DownloadSchedule() {
   const [description, setDescription] = useState("");
   const eventId = sessionStorage.getItem("eventId");
   const navigate = useNavigate();
-  const eventRef = doc(db, "event", "8OkkhqzX1clf3U0FoZJ5");
-  const scheduleRef = collection(eventRef, "schedule");
   const viewEventId = sessionStorage.getItem("viewEventId");
   const viewScheduleId = sessionStorage.getItem("currScheduleId");
+  const eventRef = doc(db, "event", viewEventId );
+  const scheduleRef = collection(eventRef, "schedule");
 
   useEffect(() => {
     fetchScheduleData();
   }, []);
 
   const fetchScheduleData = async () => {
-    const scheduleCollectionRef = collection(
-      db,
-      "event",
-      viewEventId,
-      "schedule"
+    const scheduleCollectionRef = query(
+      collection(db, "event", viewEventId, "schedule"),
+      orderBy("schedule_startDate")
     );
-    // const scheduleList = [];
-    // if (!scheduleQuerySnapshot.empty) {
-    //   scheduleQuerySnapshot.forEach((doc) => {
-    const scheduleQuery = query(
-      scheduleCollectionRef,
-      where(documentId(), "==", viewScheduleId)
-    );
-    const querySnapshot = await getDocs(scheduleQuery);
-    if (!querySnapshot.empty) {
-      const scheduleData = querySnapshot.docs[0].data();
-      const scheduleTitle = scheduleData.schedule_title;
-      const scheduleStartDate = scheduleData.schedule_startDate;
-      const scheduleEndDate = scheduleData.schedule_endDate;
-      const scheduleVenue = scheduleData.schedule_Venue;
-      const scheduleDescription = scheduleData.schedule_description;
-      console.log(scheduleData);
-      const sDate = scheduleStartDate;
-      const eDate = scheduleEndDate;
-      setscheduletitle(scheduleTitle);
-      setVenue(scheduleVenue);
-      setStartDate(sDate);
-      setEndDate(eDate);
-      setDescription(scheduleDescription);
+    const scheduleQuerySnapshot = await getDocs(scheduleCollectionRef);
+    const scheduleList = [];
+    if (!scheduleQuerySnapshot.empty) {
+      scheduleQuerySnapshot.forEach((doc) => {
+        const scheduleData = doc.data();
+        const scheduleTitle = scheduleData.schedule_title;
+        const scheduleStartDate = scheduleData.schedule_startDate;
+        const scheduleEndDate = scheduleData.schedule_endDate;
+        const scheduleVenue = scheduleData.schedule_Venue;
+        const scheduleDescription = scheduleData.schedule_description;
+
+        scheduleList.push({
+          scheduleTitle,
+          scheduleStartDate,
+          scheduleEndDate,
+          scheduleVenue,
+          scheduleDescription,
+        });
+      });
+      setSchedule(scheduleList);
     }
   };
+
 
   return (
     <div>
@@ -87,7 +84,6 @@ function DownloadSchedule() {
               <div className="D-box">
                 <span
                   class="D-input_sch"
-                 
                   onChange={(e) => setEndDate(e.target.value)}
                 >
                   {schedule.scheduleStartDate}
@@ -109,7 +105,7 @@ function DownloadSchedule() {
                   class="D-input_sch"
                   onChange={(e) => setEndDate(e.target.value)}
                 >
-                   {schedule.scheduleEndDate}
+                  {schedule.scheduleEndDate}
                 </span>
                 <input
                   disabled
@@ -143,7 +139,7 @@ function DownloadSchedule() {
               class="D-textarea-desc"
               onChange={(e) => setDescription(e.target.value)}
             >
-             {schedule.scheduleVenue}
+              {schedule.scheduleVenue}
             </span>
           </div>
         </div>

@@ -70,7 +70,7 @@ const CallOtp = (props) => {
 
   const handleInputChange = async () => {    
     ph === "" ? toast.error("Enter Mobile Number !") : fetchEventData(ph);
-    showOTP?console.log("user exist"):toast("Please Sign Up");
+    showOTP?console.log("user exist"):console.log("Please Sign Up");
 
     
   };
