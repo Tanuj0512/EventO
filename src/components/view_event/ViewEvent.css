@@ -86,13 +86,15 @@ input.tag1 {
 }
 
 .EditButton {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
   position: relative;
   z-index: 2;
   width: 20%;
   margin-top: 0vh;
   margin-left: 0;
 }
-
 img.VE-Image {
   width: 30vw;
   height: 45vh;
@@ -205,9 +207,10 @@ img.VE-Image {
   font-size: large;
   font-weight: 500;
   margin: auto;
-  margin-left: 0.5%;
+  margin-left: 0.5%; 
   padding: 2px 0px 2px 0px;
   display: flex;
+  color: #242424;
 }
 
 .Description {

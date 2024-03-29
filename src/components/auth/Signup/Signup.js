@@ -501,10 +501,10 @@ const Signup = () => {
               type="tel"
               {...register("mobile", {
                 required: "Mobile number is required",
-                pattern: {
-                  value: /^[0-9]{10}$/, // Regular expression for 10 digits
-                  message: "Please enter a valid 10-digit phone number",
-                },
+                // pattern: {
+                //   value: /^[0-9]{10}$/, // Regular expression for 10 digits
+                //   message: "Please enter a valid 10-digit phone number",
+                // },
               })}
               style={{
                 backgroundColor: "#eee",

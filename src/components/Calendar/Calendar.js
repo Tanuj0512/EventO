@@ -23,7 +23,7 @@ export default function Calendaratnd() {
       "selectDate",
       dayjs(currentDate).format("MMMM D,YYYY")
     );
-  }, [OrgWindow()]);
+  }, [OrgWindow]);
 
   return (
     <div

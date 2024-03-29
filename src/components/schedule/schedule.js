@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { addscheduleToDatabase } from "../utils/addSchedule";
 import "./schedule.css";
 
-function Schedule() {
+function Schedule(zz) {
   let scheduleId = "";
   const [scheduletitle, setscheduletitle] = useState("");
   const [startDate, setStartDate] = useState("");

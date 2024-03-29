@@ -68,7 +68,7 @@ function DownloadSchedule() {
     <div>
       <div className="D-CE-heading">Schdeules</div>
       {schedules.map((schedule, index) => (
-        <div>
+        <div className="downloadSchedule">
           <div className="D-event_title">
             <label class="Dlabel" placeholder="D-Schedule Name">
               Schedule Name

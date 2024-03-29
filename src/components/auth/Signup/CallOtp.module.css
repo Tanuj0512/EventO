@@ -2,7 +2,9 @@
     display: flex;    
     
 }
-
+input[type="tel"] {
+    border: 1px solid black;
+}
 .PhoneInput.country-list{
     text-align: left;
 }

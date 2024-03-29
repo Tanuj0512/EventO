@@ -30,6 +30,7 @@ export const OrgWindow = () => {
     try {
       const collectionRef = collection(db, "user", sessionId, data_info);
       const querySnapshot = await getDocs(collectionRef);
+      console.log(querySnapshot);
       const idList = [];
       if (!querySnapshot.empty) {
         querySnapshot.forEach((doc) => {

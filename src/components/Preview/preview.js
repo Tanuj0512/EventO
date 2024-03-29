@@ -120,8 +120,8 @@ const Preview = () => {
       scheduleQuerySnapshot.forEach((doc) => {
         const scheduleData = doc.data();
         const scheduleTitle = scheduleData.schedule_title;
-        const scheduleStartDate = scheduleData.schedule_startDate;
-        const scheduleEndDate = scheduleData.schedule_endDate;
+        const scheduleStartDate = dayjs(scheduleData.schedule_startDate).$d;
+        const scheduleEndDate = dayjs(scheduleData.schedule_endDate).$d;
         const scheduleVenue = scheduleData.schedule_Venue;
         const scheduleDescription = scheduleData.schedule_description;
 
@@ -244,8 +244,10 @@ const Preview = () => {
                         <label className="P-Heading1" for="Date">
                           Date
                         </label>
-                        <span className="tag1">{startDate}</span>
-                        <span className="tag1">{endDate}</span>
+                        <span className="P-tag1">
+                          {dayjs(startDate).format("MMMM d,YYYY")} -
+                          {dayjs(endDate).format("MMMM d,YYYY")}
+                        </span>
                       </div>
                     </div>
                     <div className="P-Description">

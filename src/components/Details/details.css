@@ -18,7 +18,29 @@
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 
 }
+.errors-css{
+  color: red;
+  font-size: smaller;
+  padding-bottom: 2vh;
+}
 
+.type-error{
+  display: flex;
+  flex-direction: row;
+}
+.date-error {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.req {
+  color: red;
+}
+
+.Pg {
+  margin-left: -25vw;
+}
 .D-tophead1 {
   display: flex;
   justify-content: space-evenly;
@@ -29,7 +51,7 @@
 
 /* Label  */
 .D-label{
-  color:#f44336;
+  color:#664DE5;
   font-size: medium;
   font-style: oblique;
 }

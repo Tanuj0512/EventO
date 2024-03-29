@@ -14,7 +14,7 @@ import {
 // import Header from "../header/header";
 import { setDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 import { UseSelector } from "react-router-dom";
-
+import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 // import Modal from "../Modal/Modal.jsx";
@@ -56,7 +56,8 @@ const DownloadEvent = () => {
         const imageUrl = eventData.Event_IMAGE;
         const eventname = eventData.Event_name;
         const eventaddress = eventData.Event_venue;
-        const eventStartTimestamp = eventData.Event_start;
+        // const eventStartTimestamp = eventData.Event_start;
+        const eventStartDate = dayjs(eventData.Event_start).$d;
         const eventAbout = eventData.Event_About;
         const eventOrganizer = eventData.Event_organizor;
         const eventContact = eventData.Event_Contact;
@@ -75,7 +76,8 @@ const DownloadEvent = () => {
         setEventContact(eventContact);
         setEventMobile(eventMobile);
         setEventEmail(eventEmail);
-        console.log(eventOrganizer);
+        setEventStart(eventStartDate);
+        console.log(eventStart);
         console.log(imageUrl);
         sessionStorage.setItem("currEvent", eventname);
       }
@@ -93,9 +95,7 @@ const DownloadEvent = () => {
   return (
     <div className="D-outerBox">
       <div className="D-Title">
-        <span className="D-tag ">
-          {eventName}
-        </span>
+        <span className="D-tag ">{eventName}</span>
       </div>
       <div className="D-upper">
         <div className="D-Image">
@@ -122,12 +122,14 @@ const DownloadEvent = () => {
           <div className="D-VE1">
             <label className="D-Heading1">Date</label>
 
-            <span className="D-tag1">{eventStart}</span>
+            <span className="D-tag1">
+              {dayjs(eventStart).format("MMMM D,YYYY")}
+            </span>
           </div>
 
           <div className="D-VE1">
-            <label className="D-Heading1">Time</label>
-            <span className="D-tag1">{eventStart}</span>
+            {/* <label className="D-Heading1">Time</label>
+            <span className="D-tag1">{eventStart}</span> */}
           </div>
         </div>
       </div>

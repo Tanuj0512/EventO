@@ -33,12 +33,23 @@ import DropdownWithTextField from "./dropdown";
 import Venue from "./Venue";
 import Ticket from "./tickets";
 import dayjs from "dayjs";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const PageOne = ({ onButtonClick }) => {
+  const schema = yup.object().shape({
+    eventTitle: yup.string().required("Event title is required"),
+    eventAbout: yup.string().required("Event description is required"),
+    count: yup.number().required("Number of participants is required"),
+    venue: yup.string().required("Venue is required"),
+    startDate: yup.date().required("Start date is required"),
+    endDate: yup.date().required("End date is required"),
+  });
+
   let eventId = "";
   const defaultFile = banner;
   const [fileAddress, setFileAddress] = useState(defaultFile);
-  const { register } = useForm();
+
   const [eventTitle, setEventTitle] = useState("");
   const [eventCategory, setEventCategory] = useState("");
   const [plannerFirstName, setPlannerFirstName] = useState("");
@@ -139,8 +150,16 @@ const PageOne = ({ onButtonClick }) => {
       }
     );
   };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema), // Integrate Yup with React Hook Form
+  });
 
   const handleSubmission = async () => {
+  
     let eventData = {
       eventTitle,
       plannerFirstName,
@@ -175,6 +194,11 @@ const PageOne = ({ onButtonClick }) => {
 
     console.log("Saved Moving To Details");
     // onButtonClick("pagetwo");
+  };
+
+  const onSubmit = () => {
+    handleSubmission();
+    toast("Please Wait till next Page Loads");
   };
 
   const handleDropdownChange = (event) => {
@@ -215,8 +239,8 @@ const PageOne = ({ onButtonClick }) => {
       <div>
         {/* <Event /> */}
         <div className="CE-whole">
-          {/* onSubmit={handleSubmission} */}
           <form
+            onSubmit={handleSubmit(onSubmit)}
             id="form"
             class="form"
             style={{
@@ -250,7 +274,7 @@ const PageOne = ({ onButtonClick }) => {
                     <div className="CE-title_desc">
                       <div className="CE-event_title">
                         <label htmlFor="eventTitle" class="CE-label">
-                          Name of event
+                          Name of event<span className="req">*</span>
                         </label>
 
                         <input
@@ -258,25 +282,37 @@ const PageOne = ({ onButtonClick }) => {
                           placeholder=" Event Title"
                           name="name"
                           type="text"
+                          {...register("eventTitle")}
                           value={eventTitle}
                           onChange={(e) => {
                             setEventTitle(e.target.value);
                           }}
                         />
+                        {errors.eventTitle && (
+                          <span className="errors-css">
+                            {errors.eventTitle.message}
+                          </span>
+                        )}
                       </div>
 
                       <div className="CE-event_desc">
                         <label htmlFor="Event Description" class="CE-label">
-                          Event Description
+                          Event Description<span className="req">*</span>
                         </label>
 
                         <textarea
                           class="CE-textarea-desc"
                           placeholder=" Event Description"
                           type="text"
+                          {...register("eventAbout")}
                           value={eventAbout}
                           onChange={(e) => setEventAbout(e.target.value)}
                         />
+                        {errors.eventAbout && (
+                          <span className="errors-css">
+                            {errors.eventAbout.message}
+                          </span>
+                        )}
                       </div>
                     </div>
                     <div className="CEE-image">
@@ -305,7 +341,9 @@ const PageOne = ({ onButtonClick }) => {
                           style={{ position: "absolute", left: "-9999px" }}
                           accept="image/, video/"
                         />
-                        <label htmlFor="custom-btn" className="ChooseImg">Choose File</label>
+                        <label htmlFor="custom-btn" className="ChooseImg">
+                          Choose File
+                        </label>
                         {file && <p>File selected: {file.name}</p>}
                         {/* <input
                           type="file"
@@ -320,16 +358,22 @@ const PageOne = ({ onButtonClick }) => {
                   <div className="CE-basic">
                     <div className="CE-pc">
                       <label htmlFor="participants" class="CE-label">
-                        Number of Participants
+                        Number of Participants<span className="req">*</span>
                       </label>
 
                       <input
                         class="CE-input-part"
                         placeholder={count}
                         type="select"
+                        {...register("count")}
                         value={count}
                         onChange={(e) => setCount(e.target.value)}
                       />
+                      {errors.count && (
+                        <span className="errors-css">
+                          {errors.count.message}
+                        </span>
+                      )}
                     </div>
 
                     <div className="pc">
@@ -340,12 +384,13 @@ const PageOne = ({ onButtonClick }) => {
                           style={{ paddingBottom: "1em" }}
                           class="CE-label"
                         >
-                          Category
+                          Category<span className="req">*</span>
                         </label>
                         <select
                           id="CE-dropdown"
                           value={selectedOption}
                           onChange={handleDropdownChange}
+                          // {...register("selectedOption")}
                         >
                           <option value="">Select...</option>
                           <option value="Entertainment">Entertainment</option>
@@ -397,7 +442,9 @@ const PageOne = ({ onButtonClick }) => {
                   <div className="CE-Venue">
                     <div className="CE-typeEvent">
                       <label class="CE-label1">
-                        Type of Event:
+                        <div class="type-error">
+                          Type of Event<span className="req">*</span>
+                        </div>
                         <select
                           id="CE-dropdown"
                           value={eventStatus}
@@ -417,8 +464,14 @@ const PageOne = ({ onButtonClick }) => {
                             class="CE-input-title"
                             type="text"
                             value={venue}
+                            {...register("venue")}
                             onChange={handleChangeLocation}
                           />
+                          {errors.venue && (
+                            <span className="errors-css">
+                              {errors.venue.message}
+                            </span>
+                          )}
                         </label>
                         {/* Render the textbox component based on the online status */}
                       </div>
@@ -430,8 +483,14 @@ const PageOne = ({ onButtonClick }) => {
                             class="CE-input-title"
                             type="text"
                             value={venue}
+                            {...register("venue")}
                             onChange={handleChangeLocation}
                           />
+                          {errors.venue && (
+                            <span className="errors-css">
+                              {errors.venue.message}
+                            </span>
+                          )}
                         </label>
                       </div>
                     )}
@@ -457,7 +516,9 @@ const PageOne = ({ onButtonClick }) => {
 
                 <div className="CE-Schedule">
                   <div className="CE-session">
-                    <label class="CE-label">Event Start</label>
+                    <label class="CE-label">
+                      Event Start<span className="req">*</span>
+                    </label>
 
                     <div className="CE-box">
                       <input
@@ -465,11 +526,17 @@ const PageOne = ({ onButtonClick }) => {
                         placeholder=" Event Start"
                         type="date"
                         value={startDate}
+                        {...register("startDate")}
                         onChange={(e) => {
                           setStartDate(e.target.value);
                           console.log(e.target.value);
                         }}
                       />
+                      {errors.startDate && (
+                        <span className="errors-css">
+                          {errors.startDate.message}
+                        </span>
+                      )}
                       <input
                         class="CE-input_sch"
                         placeholder=" Event Start"
@@ -480,15 +547,23 @@ const PageOne = ({ onButtonClick }) => {
                   </div>
 
                   <div className="CE-session">
-                    <label class="CE-label">Event End</label>
+                    <label class="CE-label">
+                      Event End<span className="req">*</span>
+                    </label>
                     <div className="CE-box">
                       <input
                         class="CE-input_sch"
                         placeholder=" Event End"
                         type="date"
                         value={endDate}
+                        {...register("endDate")}
                         onChange={(e) => setEndDate(e.target.value)}
                       />
+                      {errors.endDate && (
+                        <span className="errors-css">
+                          {errors.endDate.message}
+                        </span>
+                      )}
                       <input
                         class="CE-input_sch"
                         placeholder=" Event Start"
@@ -518,30 +593,30 @@ const PageOne = ({ onButtonClick }) => {
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-      </div>
-      <div>
-        <footer>
+            <footer>
           <div className="footer-butn">
             <div className="footer-twobt">
               <button className="evtBack"> Back </button>
               <button
                 type="submit"
-                id="submit"
                 className="evtSave"
                 value="Create Workspace"
-                onClick={(e) => {
-                  handleSubmission();
-                  toast("Please Wait till till next Page Loads");
-                  // onButtonClick("pagetwo");
-                }}
+                // onClick={(e) => {
+                //   handleSubmission();
+                //   toast("Please Wait till till next Page Loads");
+                //   // onButtonClick("pagetwo");
+                // }}
               >
                 Next
               </button>
             </div>
           </div>
         </footer>
+          </form>
+        </div>
+      </div>
+      <div>
+
       </div>
     </div>
   );

@@ -245,3 +245,7 @@ span.D-textarea-desc {
 .D-Title {
   display: flex;
 }
+
+.downloadSchedule{
+  border: 1px solid gray;
+}

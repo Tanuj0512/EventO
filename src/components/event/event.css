@@ -315,7 +315,7 @@ textarea::placeholder {
 
 /* label  */
 .CE-label{
-  color:#f44336;
+  color:#664DE5;
   font-size: medium;
   font-style: oblique;
 }
@@ -399,7 +399,7 @@ select#CE-dropdown {
 }
 
 .CE-label1{
-  color: #f44336;
+  color: #664DE5;
   font-size: medium;
   font-style: oblique;
   display: flex;
