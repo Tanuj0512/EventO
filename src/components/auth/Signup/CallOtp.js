@@ -174,7 +174,7 @@ const CallOtp = (props) => {
                     Verify your phone number
                   </label>
               */}
-                <h4>Enter Your Mobile Number</h4>
+                <h4 style={{marginLeft:"-45px"}}>Enter Your Mobile Number</h4>
                 <PhoneInput
                   className={styles.phInput}
                   country={"in"}
@@ -193,7 +193,7 @@ const CallOtp = (props) => {
                       style={{ color: "#fffff" }}
                     />
                   )}
-                  <span>Sign In</span>
+                  <span >Sign In</span>
                 </button>
               </>
             )}

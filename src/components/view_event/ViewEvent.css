@@ -48,18 +48,18 @@ img.VE-generalImg {
   margin-top: 5vh;
   border-radius: 8px 8px 0px 0px;
 
-  box-shadow: rgb(98 102 106) 0px 20px 70px 0px;
+  box-shadow: rgb(98 102 106) 0px 20px 50px 0px;
 }
 input.tag1 {
   color: black;
 }
 .VE-EditBut {
-  padding-top: 4vh;
+  /* padding-top: 4vh; */
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   /* background-color: antiquewhite; */
-  width: 95%;
+  /* width: 95%; */
 }
 .Title {
   display: flex;
@@ -67,7 +67,9 @@ input.tag1 {
   padding: 0px 0px 5px 0px;
   font-size: 3em;
   font-weight: 600;
-  background-image: radial-gradient(circle, #553c9a, #ee4b2b);
+  background: -webkit-linear-gradient(#ee4b2b, #553c9a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -79,7 +81,7 @@ input.tag1 {
   padding: 15px 0px 0px 0px;
   font-size: 40px;
   font-weight: 600;
-  background-image: radial-gradient(circle, #553c9a, #ee4b2b);
+  background: -webkit-linear-gradient(#ee4b2b, #553c9a);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -95,6 +97,7 @@ input.tag1 {
   margin-top: 0vh;
   margin-left: 0;
 }
+
 img.VE-Image {
   width: 30vw;
   height: 45vh;
@@ -331,13 +334,15 @@ textarea.VE-viewtag11 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 95%;
+  width: 100%;
 }
 
 .Socials {
   display: flex;
+  padding-top: 2vh;
+  padding-right: 1vw;
   flex-direction: row;
-  width: 7vw;
+  width: 10vw;
   /* background-color: #2af6f6; */
   justify-content: space-between;
 }
@@ -349,7 +354,7 @@ textarea.VE-viewtag11 {
   height: 40px;
   border: none;
   border-radius: 50%;
-  background-color: #9757c8;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -358,6 +363,7 @@ textarea.VE-viewtag11 {
   position: relative;
   transition-duration: 0.3s;
   /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11); */
+  border: 1px solid #673ab7;
 }
 
 .svgIcon {
@@ -372,13 +378,15 @@ textarea.VE-viewtag11 {
   border-right: 2px solid white;
 }
 
+
+
 .tooltip {
   position: absolute;
   bottom: -32px;
   opacity: 0;
   background-color: white;
-  color: #9757c8;
-  border: 1px solid #9757c8;
+  color: #673ab7;
+  /* border: 1px solid #9757c8; */
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
@@ -388,6 +396,8 @@ textarea.VE-viewtag11 {
   pointer-events: none;
   letter-spacing: 0.5px;
 }
+
+
 
 /* .tooltip::before {
   position: absolute;
@@ -408,7 +418,8 @@ textarea.VE-viewtag11 {
 }
 
 .Btn:hover {
-  background-color: #ff5722;
+  border: 1px solid #ffffff ;
+  background-color: #673ab7;
   transition-duration: 0.3s;
 }
 
@@ -435,242 +446,3 @@ textarea.VE-viewtag11 {
   }
 }
 
-/* 
-.outerBox{
-  margin: auto;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-  margin-top: 1em;
-  padding: 3em;
-  width: 90vw;
-  
-  height: fit-content;
-
-  background: #ffffff;
-  
-  display: flex;
-  flex-direction: column;
-  
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-  
-}
-
-
-
-
-.Image{
-  
-  width: 570px;
-  height: 280px;
-  object-fit:cover;
-  margin:auto;
- 
-}
-.blur-bg{
-  background: rgb(198,172,183);
-  background: radial-gradient(circle, rgba(198,172,183,1) 0%, rgba(255,255,255,1) 100%);
-  width: 50vw;
-}
-.Heading{
-  font-size: 17pt;
-  display: flex;
-  flex-direction: column;
-  
-  align-items: start;
-  font-style: italic;
-}
-
-
-
-.TAG{
-    
-    border-radius: 5px; 
-}
-.tag{
-border: none;
-height: 70px;
-background-color: #ffffff;
-width: 500px;
-text-align: center;
-    
-}
-
-.tag::placeholder {
-  color: #FF0000;
-  font-size: 2rem;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.tag1 {
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  height: 50px;
-  background-color: #fbfbfb;
-  width: 300px;
-  text-align: start;
-}
-
-
-.tag111 {
-  width: 640px;
-  height: 100px;
-  
-  background-color: #fbfbfb;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  display: flex;
-}  
-
-
-
-
-.tag1::placeholder {
-  color: #000000;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.tag11::placeholder {
-  color: #000000;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.tag111::placeholder {
-  color: #000000;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-
-.Title{
-  display: flex;
-  flex-direction:column;
-  justify-self: center; 
-  padding: 1.5em;
- 
-}
-
-
-.lowerbox{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 85em; 
- 
-}
-
-.desc{
-  width: 70%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 1.5em;
- 
-  
-}
-
-
-.VE-Schedule {
-  background-color: #ffffff;
-  width: 18vw;
-  height: 25vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  border-radius: 5px;
-  margin: 5vh 3vw;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 10px;
-    
-   
- 
-}
-
-.VE-schedule {
-  font-size: x-large;
-  color: #4f4f4f;
-}
-
-
-
-
-
-
-
-.Orgdetail{
-  display: flex;
-  gap: 30px;
-  
-}
-.Description{
-  display: flex;
-  flex-direction: column;
-  padding-top: 45px;
-}
-
-
-
-.WW{
-  font-size: 13pt;
-  color: blue; 
-  display: flex;
-  flex-direction: column;
-  
-}
-.DTdes{
-  display: flex;
-  gap: 30px;
-  width: 70vw;
-}
-
-.add{
-  display: flex;
-  gap: 30px;
-  width: 23vw;
-}
-
-
-
-.CD{
-  font-size: 13pt;
-  color: blue; 
-  display: flex;
-  gap: 20px;  
-}
-
-
-input[type="text"]:disabled {
-  background:#ffffff;
-  border: none;
-  font-size: larger;
-  color:#000000;
-}
-input[type="date"]:disabled {
-  background:#ffffff;
-  border: none;
-  font-size: large;
-  color:#000000;
-}
-input[type="time"]:disabled {
-  background:#ffffff;
-  border: none;
-  font-size: large;
-  color:#000000;
-}
-input[type="email"]:disabled {
-  background:#ffffff;
-  border: none;
-  font-size: large;
-  color:#000000;
-}
-input[type="tel"]:disabled {
-  background:#ffffff;
-  border: none;
-  font-size: large;
-  color:#000000;
-} */

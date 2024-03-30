@@ -89,17 +89,15 @@ export default function ShareBtn() {
     <div className="sharebutton">
       <button class="Btn" onClick={toggleModal}>
         <svg
-          height="19"
-          width="19"
+          class="w-6 h-6 text-grey-800 dark:text-white"
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-          viewBox="0 0 1024 1024"
-          class="shere"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
         >
-          <path
-            fill="#ffffff"
-            d="M767.99994 585.142857q75.995429 0 129.462857 53.394286t53.394286 129.462857-53.394286 129.462857-129.462857 53.394286-129.462857-53.394286-53.394286-129.462857q0-6.875429 1.170286-19.456l-205.677714-102.838857q-52.589714 49.152-124.562286 49.152-75.995429 0-129.462857-53.394286t-53.394286-129.462857 53.394286-129.462857 129.462857-53.394286q71.972571 0 124.562286 49.152l205.677714-102.838857q-1.170286-12.580571-1.170286-19.456 0-75.995429 53.394286-129.462857t129.462857-53.394286 129.462857 53.394286 53.394286 129.462857-53.394286 129.462857-129.462857 53.394286q-71.972571 0-124.562286-49.152l-205.677714 102.838857q1.170286 12.580571 1.170286 19.456t-1.170286 19.456l205.677714 102.838857q52.589714-49.152 124.562286-49.152z"
-          ></path>
+          <path d="M17.5 3a3.5 3.5 0 0 0-3.456 4.06L8.143 9.704a3.5 3.5 0 1 0-.01 4.6l5.91 2.65a3.5 3.5 0 1 0 .863-1.805l-5.94-2.662a3.53 3.53 0 0 0 .002-.961l5.948-2.667A3.5 3.5 0 1 0 17.5 3Z" />
         </svg>
 
         <span class="tooltip">Share</span>
@@ -110,7 +108,6 @@ export default function ShareBtn() {
           <div onClick={toggleModal} className="overlayyy"></div>
           <div className="modal-content">
             <div className="share-head">
-              
               <h2>Share the link via</h2>
             </div>
             <div
@@ -222,7 +219,6 @@ export default function ShareBtn() {
               className="link_box"
               placeholder="  URL...."
               readOnly={true}
-              
             ></input>
             <button
               className="copyBtn"
