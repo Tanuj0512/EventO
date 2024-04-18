@@ -158,7 +158,7 @@ function View_sch() {
                       class="SS-input_sch"
                       // onChange={(e) => setEndDate(e.target.value)}
                     >
-                      {schedule.scheduleStartDate}- start Time
+                      {schedule.scheduleStartDate}
                     </span>
                   </div>
 
@@ -169,7 +169,7 @@ function View_sch() {
                       class="SS-input_sch"
                       // onChange={(e) => setEndDate(e.target.value)}
                     >
-                      {schedule.scheduleEndDate}- End Time
+                      {schedule.scheduleEndDate}
                     </span>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ function View_sch() {
                     class="SS-textarea-desc"
                     // onChange={(e) => setDescription(e.target.value)}
                   >
-                    {schedule.scheduleVenue}
+                    {schedule.scheduleDescription}
                   </span>
                 </div>
               </div>

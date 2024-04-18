@@ -69,6 +69,7 @@
 }
 
 .SS-input_sch {
+  display: flex;
   font-size: medium;
   height: 27px;
   width: 185px;

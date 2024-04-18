@@ -17,13 +17,26 @@ export default function Calendaratnd() {
     dayjs(currentDate).format("MMMM D,YYYY")
   );
   const navigate = useNavigate();
-
+  const [eventDates, setEventDates] = useState([]);
+  const [viewOption, setViewOption] = useState("week"); 
   useEffect(() => {
     sessionStorage.setItem(
       "selectDate",
       dayjs(currentDate).format("MMMM D,YYYY")
     );
   }, [OrgWindow]);
+
+  useEffect(() => {
+    // Logic to fetch event dates
+    // Assuming you have a function fetchEventDates that fetches dates with events
+    const fetchEventDates = async () => {
+      // Perform your logic to fetch event dates
+      const eventDates = ["2024-04-15", "2024-04-20"]; // Example: dates with events
+      setEventDates(eventDates);
+    };
+
+    fetchEventDates();
+  }, []);
 
   return (
     <div
@@ -41,11 +54,11 @@ export default function Calendaratnd() {
       <div className="threebt"></div>
       <div className="container-calendar">
         <div>
-          {" "}
           <div className="header-2">
             <div style={{ width: "fit-content", height: "fit-content" }}>
               <h1 id="events-tag">Events</h1>
             </div>
+
             <div className="buttn" id="list">
               <button
                 class="btn"
@@ -53,7 +66,7 @@ export default function Calendaratnd() {
                   navigate("/attendevents");
                 }}
               >
-                List{" "}
+                My Events
               </button>
             </div>
 
@@ -106,6 +119,10 @@ export default function Calendaratnd() {
               <div className=" digits ">
                 {generateDate(today.month(), today.year()).map(
                   ({ date, currentMonth, today }, index) => {
+                    // Check if the date has events
+                    const hasEvents = eventDates.includes(
+                      dayjs(date).format("YYYY-MM-DD")
+                    );
                     return (
                       <div key={index} className=" digits1">
                         <h2
@@ -187,10 +204,22 @@ export default function Calendaratnd() {
               </button>
             </div>
           )}
+          <div className="view-option">
+            <select
+              value={viewOption}
+              onChange={(e) => setViewOption(e.target.value)}
+            >
+              <option value="week">Week</option>
+              <option value="month">Month</option>
+            </select>
+          </div>
+
           <div className="container-events">
             <div className="eventsheader">Your Events</div>
             <div className="eventslist">
-              <OrgWindow />
+              {/* Render the appropriate window based on the selected view option */}
+              {viewOption === "week" ? <OrgWindow /> : null}
+              {/* {viewOption === "week" ? <AttendWindow /> : null} */}
               {/* {sessionStorage.getItem("type") ? (
                 <OrgWindow />
               ) : (

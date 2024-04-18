@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs,query,where, orderBy } from "firebase/firestore";
 import Header from "../header/header";
 import styles from "./event_dis.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,9 @@ function Event_dis() {
 
   const fetchEventData = async () => {
     try {
-      const eventsCollectionRef = collection(db, "event");
+      // const eventsCollectionRef = query(collection(db, "event"), where("Event_verified", "==", "yes"), orderBy("Event_start"));
+
+      const eventsCollectionRef = query(collection(db, "event"),orderBy("Event_start"));
       const eventQuerySnapshot = await getDocs(eventsCollectionRef);
 
       if (!eventQuerySnapshot.empty) {
@@ -32,6 +34,8 @@ function Event_dis() {
           const eventStartTimestamp = eventData.Event_start;
           const eventStartDate = dayjs(eventData.Event_start).$d;
           const eventId = eventData.Event_id;
+          const eventStatus = eventData.Event_status;
+        const eventCount = eventData.Event_count;
           // console.log("Empty !");
           // console.log(sessionStorage.getItem("viewEventId"));
           eventList.push({
@@ -40,6 +44,8 @@ function Event_dis() {
             eventaddress,
             eventStartDate,
             eventId,
+            eventCount,
+            eventStatus,
           });
         });
 
@@ -117,9 +123,9 @@ function Event_dis() {
                       </p>
                     )}
 
-                    <p className={styles.detaildiv}>online</p>
+                    <p className={styles.detaildiv}>{event.eventStatus}</p>
 
-                    <p className={styles.detaildiv}>500</p>
+                    <p className={styles.detaildiv}>{event.eventCount}</p>
                   </div>
                 </button>
 

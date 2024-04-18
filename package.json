@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@alan-ai/alan-sdk-web": "^1.8.54",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.4",
@@ -48,6 +49,7 @@
     "react-spinners": "^0.13.8",
     "react-step-progress-bar": "^1.0.3",
     "react-time-ago": "^7.2.1",
+    "react-toastify": "^10.0.5",
     "react-use-clipboard": "^1.0.9",
     "react-web-share": "^2.0.2",
     "redux-persist": "^6.0.0",

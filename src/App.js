@@ -28,6 +28,8 @@ import AllEvent from "./components/allEvents-desc/allEvent";
 import CrtEvent from "./components/Stepcomponents/stepper/stepper";
 import ChatbotBox from "./components/chatbot/Chatbot";
 import Download from "./components/Download/download";
+import Admin from "./components/admin/Admin";
+// import RateEvent from "./components/EventRating/Routing";
 
 function App() {
   console.log("trial log");
@@ -39,6 +41,7 @@ function App() {
             {/* <Route path="/" element={<OrgEvents/>} /> */}
             <Route path="/" element={<LandingPage />} />;
             <Route path="/signup" element={<Signup />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/users" element={<Users />} />
             <Route path="/aboutus" element={<Aboutus />} />
             <Route path="/calendar" element={<Calendar />} />;
@@ -57,6 +60,7 @@ function App() {
             <Route path="/allEvent" element={<AllEvent />} />
             <Route path="/crtevnets" element={<CrtEvent />} />
             <Route path="/download" element={<Download />} />
+            {/* <Route path="/eventrating" element={<RateEvent />} /> */}
           </Routes>
         </Router>
       </div>

@@ -7,6 +7,16 @@
     min-width: 100vw;
     min-height:100vh;
 }
+.nameee{
+    align-items: baseline;
+    margin-left: 32vw;
+    justify-content: space-evenly;
+    /* background-color: antiquewhite; */
+    width: 14vw;
+    height: 0vh;
+    display: flex;
+    flex-direction: row;
+}
 
 .outerBox{
     margin:auto;
@@ -15,7 +25,7 @@
     box-sizing: border-box;
     position: relative;
     margin-top: 3%;
-    padding: 3em;
+    padding: 1em;
     width: 80vw;
     height: 80vh;
     border-radius: 10px;
@@ -32,12 +42,19 @@
   background-color:  rgb(175, 104, 239);
 }
 
+.welcometext{
+    font-size: small;
+    height: 13vh;
+    line-height: 6vh;
+    color: #673AB7;
+}
+
 .header1{
     position: relative;
     /* text-align: left; */
-    top:10px;    
-    font-size: 2rem;
-    color: #333;
+    /* top: 10px; */
+    font-size: 1.5rem;
+    color: gray;
 }
 
 .button{
@@ -89,7 +106,7 @@
     display: flex;
     flex-direction: row;
    
-    margin-top: 3vh;
+    margin-top: -7vh;
     height: 55vh;
     justify-content: center;
     justify-content: space-evenly;
@@ -114,4 +131,10 @@
         width: 14vw;
         margin-Top: -2vh;
         margin-Left: -1vw;
+}
+
+.rating{
+    position: absolute;
+    margin-left: 90%;
+    margin-top: 8%;
 }

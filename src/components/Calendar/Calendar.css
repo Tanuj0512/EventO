@@ -99,7 +99,49 @@
   transition: transform 0.3s;
   color: #607D8B;;
 }
+/* Style for the dropdown container */
+.view-option {
+  margin-left: 3vw;
+  margin-right: 25vw;
+  margin-bottom: 20px;
+  position: relative;
+}
 
+/* Style for the select element */
+.view-option select {
+  padding: 10px 30px 10px 10px; /* Add padding on the right for the arrow */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* Remove default arrow for Safari */
+  -moz-appearance: none; /* Remove default arrow for Firefox */
+  width: 100%; /* Make the select element expand to fill the container */
+}
+
+/* Style for the select arrow */
+.view-option::after {
+  content: "\25BC"; /* Unicode character for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust right position for the arrow */
+  transform: translateY(-50%);
+  pointer-events: none; /* Make arrow not clickable */
+}
+
+/* Style for select when it's focused */
+
+
+/* Style for select options */
+.view-option select option {
+  background-color: #fff;
+}
+
+/* Style for select options when hovered */
+.view-option select option:hover {
+  background-color: #f4f4f4;
+}
 
 .cssbuttonsiobutton:hover .iconn svg {
   transform: translateX(0.1em);

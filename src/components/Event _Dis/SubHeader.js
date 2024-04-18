@@ -25,7 +25,7 @@ export const SubHeader = () => {
               navigate("");
             }}
           >
-            List
+           My Events
           </button>
           <button
             className={styles.btn}

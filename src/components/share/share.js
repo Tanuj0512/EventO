@@ -24,9 +24,9 @@ import {
 } from "react-share";
 import "./share.css";
 
-export default function ShareBtn() {
+export default function ShareBtn(shareId) {
   const [modal, setModal] = useState(false);
-  const [eventURL, setEventURL] = useState("hello");
+  const [eventURL, setEventURL] = useState(shareId);
   const scrollContainer = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(true);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -52,6 +52,7 @@ export default function ShareBtn() {
         }
       };
 
+      console.log(shareId);
       scrollContainer.current.addEventListener("scroll", handleScroll);
       return () => {
         scrollContainer.current.removeEventListener("scroll", handleScroll);

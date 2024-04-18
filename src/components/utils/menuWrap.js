@@ -4,6 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { mapEvent, unMapEvent } from "./mapEvent";
 import { db } from "../../config/firebase";
+import { deVerify } from "./fireStoreUtils";
 import {
   doc,
   setDoc,
@@ -16,6 +17,9 @@ import {
   docs,
   deleteDoc,
 } from "firebase/firestore";
+
+import { eventVerify } from "./fireStoreUtils";
+
 
 const AttendMenu = (props) => {
   const [mapStatus, setMapStatus] = React.useState(false);
@@ -33,7 +37,7 @@ const AttendMenu = (props) => {
     setAnchorEl(null);
   };
 
-  const mapCheck = async (id) => {
+  const mapCheck = async (id, props) => {
     const sessionId = sessionStorage.getItem("idValue");
     const collectionRef = collection(db, "user", sessionId, "AttendEvents");
     const eventQuery = query(collectionRef, where(documentId(), "==", id));
@@ -112,7 +116,7 @@ const OrgMenu = (props) => {
   };
   const deleteData = async (id) => {
     deleteDoc(doc(db, "event", id));
-    deleteDoc(doc(db,"user",sessionId,"OrgEvents",id));
+    deleteDoc(doc(db, "user", sessionId, "OrgEvents", id));
   };
 
   return (
@@ -163,8 +167,73 @@ const OrgMenu = (props) => {
   );
 };
 
+const AdminMenu = (props) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const sessionId = sessionStorage.getItem("idValue");
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-three-dots"
+          viewBox="0 0 16 16"
+        >
+          <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+        </svg>
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem onClick={() => {
+            try {
+              eventVerify(props.eventId);
+            } catch {
+              console.log("Cannot be Deleted");
+            }
+            setAnchorEl(null);
+          }}>Verify</MenuItem>
+        <MenuItem
+          onClick={() => {
+            try {
+              deVerify(props.eventId);
+            } catch {
+              console.log("Cannot be Deleted");
+            }
+            setAnchorEl(null);
+          }}
+        >
+          Delete
+        </MenuItem>
+      </Menu>
+    </div>
+  );
+};
+
 const setId = (id) => {
   sessionStorage.setItem("currentEventId", id);
 };
 
-export { OrgMenu, AttendMenu, setId };
+export { OrgMenu, AttendMenu, setId, AdminMenu,  };

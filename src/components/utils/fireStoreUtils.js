@@ -1,7 +1,6 @@
-
 import { useEffect } from "react";
 import {db} from "../../config/firebase";
-import {doc, setDoc,collection, query, getDocs } from "firebase/firestore";
+import {doc, setDoc,collection, query, getDoc, updateDoc ,deleteDoc} from "firebase/firestore";
 
 let eventId="";
 
@@ -47,8 +46,8 @@ export const addEventToDatabase = async () => {
       const EventEnd = endDate;
       const usertype=sessionStorage.getItem("type");
       console.log(usertype)
-      await setDoc(doc(db, "user",sessionId,"OrgEvents", eventId),{Id: eventId,Title: eventTitle})
-      console.log("Set to org");    
+      
+      console.log("Set to unverified");    
       await setDoc(doc(db, "event", eventId), {
         Event_name: eventTitle,
         Event_id: eventId,
@@ -68,6 +67,8 @@ export const addEventToDatabase = async () => {
         Event_status: eventStatus,
         Event_linkedin: linkedin,
         Event_twitter: twitter,
+        Event_verified:"",
+        session_Id:sessionId,
       });
     } catch (err) {
       console.error(err);
@@ -75,39 +76,28 @@ export const addEventToDatabase = async () => {
     //sessionStorage.setItem("eventId","");
   };
 
-//  export const fetchEventData = async () => {
-//     try {
-//       const eventsCollectionRef = collection(db, "event");
-//       const eventQuerySnapshot = await getDocs(eventsCollectionRef);
-      
-//       if (!eventQuerySnapshot.empty) {
-//         const eventList = [];
-//         eventQuerySnapshot.forEach((doc) => {
-//           const eventData = doc.data();
-//           const imageUrl = eventData.Event_IMAGE;
-//           const eventname = eventData.Event_name;
-//           const eventaddress = eventData.Event_address;
-//           const eventStartTimestamp = eventData.Event_start;
-//           const eventStartDate = eventStartTimestamp.toDate();
-//           const eventId = eventData.Event_id;
-//           const eventAbout= eventData.Event_About;
-//           // console.log("Empty !");
-//           // console.log(sessionStorage.getItem("viewEventId"));
-//           eventList.push({
-//             imageUrl,
-//             eventname,
-//             eventaddress,
-//             eventStartDate,
-//             eventId,
-//           });
-//         });
+export const eventVerify=async (id)=>{
+  
+  let eventTitle = sessionStorage.getItem("eventTitle");
+  const docRef = doc(db, "event", id);
+const docSnap = await getDoc(docRef);
+const data=docSnap.data();
+let sessionId = data.session_Id;
 
-//         setEvents(eventList);
-//       }
-//       else{
-//         sessionStorage.setItem("viewEventId","None");
-//       }
-//     } catch (error) {
-//       console.error("Error retrieving event data:", error);
-//     }
-//   };
+  try{
+    await updateDoc(doc(db, "event", id),{
+      Event_verified:"yes"
+    })
+    await setDoc(doc(db, "user",sessionId,"OrgEvents", id),{Id: id,Title: eventTitle})
+    console.log("Verified!")
+  }
+  catch{
+    console.log("Can't Verify");
+  }
+}
+
+export const deVerify = async (id) => {
+  let sessionId = sessionStorage.getItem("sessionId");
+  deleteDoc(doc(db, "event", id));
+  deleteDoc(doc(db, "user", sessionId, "OrgEvents", id));
+};
