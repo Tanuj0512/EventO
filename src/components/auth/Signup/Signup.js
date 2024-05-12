@@ -291,7 +291,7 @@ const Signup = () => {
         <Components.Overlay signinIn={signIn}>
           <Components.LeftOverlayPanel signinIn={signIn}>
             <Components.Title style={{ margin: "10px" }}>
-              New Here ?
+              New User ?
             </Components.Title>
             <Components.Paragraph>
               Signup and Discover New Events <br /> and Opportunities !
